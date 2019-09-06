@@ -32,7 +32,6 @@ public class LoginUIController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       // View.OnClickListener listener =
     }
 
     public void Message(ActionEvent actionEvent) {
