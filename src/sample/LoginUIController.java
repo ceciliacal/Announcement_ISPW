@@ -1,5 +1,6 @@
 package sample;
 
+import entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,6 +30,8 @@ public class LoginUIController implements Initializable {
     String ID2;
     String password2;
 
+    User utente;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -39,6 +42,7 @@ public class LoginUIController implements Initializable {
         // System.out.println("ID = " + ID);
         password = myPwd.textProperty().get();
         // System.out.println("PWD = " + password);
+
         if (check(ID,password) == 1) {
             System.out.println("Login effettuato!");
         }
@@ -51,8 +55,9 @@ public class LoginUIController implements Initializable {
 
 
     public int check(String myID, String myPWD) {
-        ID2 = "martina";
-        password2 = "cecilia";
+        utente= new User();
+        ID2 = utente.getID();
+        password2 = utente.getPassword();
         //System.out.println("myID =" + myID + " myPWD =" + myPWD);
         //System.out.println("ID2 =" + ID2 + " password2 =" + password2);
 
