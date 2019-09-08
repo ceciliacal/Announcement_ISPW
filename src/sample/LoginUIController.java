@@ -3,13 +3,16 @@ package sample;
 import entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-import javax.swing.text.View;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,24 +30,31 @@ public class LoginUIController implements Initializable {
     String password;
 
 
-    String ID2;
-    String password2;
+    String idUser;
+    String passwordUser;
 
-    User utente;
+    User myUser;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
-    public void Message(ActionEvent actionEvent) {
+    public void clickedButton(ActionEvent actionEvent) throws Exception {
         ID = myTxt.textProperty().get();
-        // System.out.println("ID = " + ID);
         password = myPwd.textProperty().get();
-        // System.out.println("PWD = " + password);
 
         if (check(ID,password) == 1) {
             System.out.println("Login effettuato!");
+
+            //compare nuova finestra
+
+            Parent root= FXMLLoader.load(getClass().getResource("LoginResponse.fxml"));
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("LoginResponse");
+            primaryStage.setScene(new Scene(root,600,600));
+            primaryStage.show();
+
         }
         else {
             System.out.println("ERRORE: ID o password errati!");
@@ -55,15 +65,12 @@ public class LoginUIController implements Initializable {
 
 
     public int check(String myID, String myPWD) {
-        utente= new User();
-        ID2 = utente.getID();
-        password2 = utente.getPassword();
-        //System.out.println("myID =" + myID + " myPWD =" + myPWD);
-        //System.out.println("ID2 =" + ID2 + " password2 =" + password2);
+        myUser = new User();
+        idUser = myUser.getID();
+        passwordUser = myUser.getPassword();
 
-        //ID2.equals(myID)
 
-        if (ID2.equals(myID) && password2.equals(myPWD)) {
+        if (idUser.equals(myID) && passwordUser.equals(myPWD)) {
             return 1;
         }
         else {
