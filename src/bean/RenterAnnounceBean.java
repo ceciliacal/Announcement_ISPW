@@ -24,7 +24,11 @@ public class RenterAnnounceBean {
     private String title;
     private HashMap<String, Boolean> services;
 
-    public RenterAnnounceBean(){};
+    public RenterAnnounceBean(){
+        this.title="";
+        this.price=0;
+
+    };
 
     public void setIdAnn(int myIdAnn){this.idAnn=myIdAnn;}
 
