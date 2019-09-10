@@ -47,7 +47,7 @@ public class DBUser {
             // (Run Configurations -> <configurazione utilizzata per l'avvio del server> -> Arguments -> VM Arguments).
             // N.B. Le asserzioni andrebbero usate solo per test e debug, non per codice in produzione
 
-            // riposizionamento del cursore
+            // riposizionamento del cursore.
             rs.first();
 
             // lettura delle colonne "by name"
