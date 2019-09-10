@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="598.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.RenterAnnounceUIController">
+<AnchorPane prefHeight="598.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.RenterAnnounceUIController">
    <children>
       <SplitPane dividerPositions="0.14261744966442952" orientation="VERTICAL" prefHeight="598.0" prefWidth="822.0">
         <items>

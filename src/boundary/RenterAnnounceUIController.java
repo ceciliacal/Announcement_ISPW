@@ -1,4 +1,4 @@
-package sample;
+package boundary;
 
 import bean.RenterAnnounceBean;
 import entity.RenterAnnounce;

@@ -1,4 +1,4 @@
-package sample;
+package boundary;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
