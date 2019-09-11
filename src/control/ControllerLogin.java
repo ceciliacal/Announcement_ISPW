@@ -27,7 +27,7 @@ public class ControllerLogin {
     }
 
 
-    public void validateLogin(UserBean bean) {
+    public void validateLogin(UserBean bean, Stage stage) {
         int res;
         String userType;
 
@@ -41,9 +41,10 @@ public class ControllerLogin {
         if (res == 1) {
             //login ok, ora devi controllare userType
             System.out.println("Login effettuato!");
-            checkUserType(bean);
+            checkUserType(bean,stage);
 
             //notify.notification(1,"LOGIN EFFETTUATO", "prosegui");
+
 
         } else {
 
@@ -52,9 +53,13 @@ public class ControllerLogin {
             notify.notification(0,"ERRORE", "ID o password errati!");
 
         }
+
+      
+
     }
 
-    public void checkUserType(UserBean bean) {
+
+    public void checkUserType(UserBean bean, Stage stage) {
 
         String userType;
         DBFunctions dbU = new DBFunctions();
@@ -69,25 +74,28 @@ public class ControllerLogin {
         Main notify = new Main();
 
         if (userType.equals("1")) {
-            notify.notification(1,"LOGIN EFFETTUATO", "Sei entrato come LOCATORE");
-        }
-        else if (userType.equals("2")){
-            notify.notification(1,"LOGIN EFFETTUATO", "Sei entrato come LOCATARIO");
+            notify.notification(1, "LOGIN EFFETTUATO", "Sei entrato come LOCATORE");
+        } else if (userType.equals("2")) {
+            notify.notification(1, "LOGIN EFFETTUATO", "Sei entrato come LOCATARIO");
         }
 
         //chiama funzione che gestisce schermata del menu a seconda se
         //utente è locatore o locatario
 
+
+
+        stage.close();
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/MenuController.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Menu.fxml"));
             Parent root = loader.load();
             MenuController controller = loader.getController();
-            //controller.createStage(bean);
+            controller.createStage(bean);
             Scene scene = new Scene(root);
 
             Stage primaryStage = new Stage();
 
-            primaryStage.setTitle("MENU");
+            primaryStage.setTitle("TenantAnnounce");
             primaryStage.setScene(scene);
 
             primaryStage.show();
@@ -96,9 +104,6 @@ public class ControllerLogin {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
 
     }
 

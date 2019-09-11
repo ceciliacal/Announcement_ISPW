@@ -31,7 +31,7 @@ public class Main extends Application {
         tray.setAnimationType(t);
         tray.setTitle(title);
         tray.setMessage(msg);
-        tray.showAndDismiss(Duration.seconds(5));
+        tray.showAndDismiss(Duration.seconds(3));
         if (type == 1) {
             tray.setNotificationType(NotificationType.SUCCESS);
         }

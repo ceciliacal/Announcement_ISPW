@@ -1,6 +1,7 @@
 package boundary;
 
 import bean.TenantAnnounceBean;
+import bean.UserBean;
 import control.ControllerTenantAnnounce;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,6 +35,7 @@ public class TenantAnnounceUIController {
 
     private TenantAnnounceBean bean = new TenantAnnounceBean();
 
+    Main notify = new Main();
 
     public void clickedPublishBtn(ActionEvent actionEvent) {
 
@@ -128,14 +130,13 @@ public class TenantAnnounceUIController {
 
     public void clickedOkButton(ActionEvent actionEvent) {
         if (checkDate() == 0) {
-            TrayNotification tray = new TrayNotification();
-            AnimationType type = AnimationType.POPUP;
-            tray.setAnimationType(type);
-            tray.setTitle("ERRORE DATA");
-            tray.setMessage("Inserisci una data successiva a quella di arrivo!");
-            tray.setNotificationType(NotificationType.ERROR);
-            tray.showAndDismiss(Duration.seconds(50));
+            notify.notification(0, "DATA ERRATA", "Inserisci una data successiva a quella di arrivo!");
         }
+    }
+
+
+
+    public void createStage(UserBean myBean) {
     }
 
 

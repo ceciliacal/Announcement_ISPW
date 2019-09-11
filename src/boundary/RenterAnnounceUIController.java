@@ -1,6 +1,7 @@
 package boundary;
 
 import bean.RenterAnnounceBean;
+import bean.UserBean;
 import entity.RenterAnnounce;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -77,5 +78,8 @@ public class RenterAnnounceUIController implements Initializable {
         }
 
         System.out.println("bean.title="+bean.getTitle());
+    }
+
+    public void createStage(UserBean myBean) {
     }
 }

@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -47,8 +48,13 @@ public class LoginUIController implements Initializable {
         bean.setId(myTxt.textProperty().get());
         bean.setPassword(myPwd.textProperty().get());
 
+        Stage stage = (Stage)myTxt.getScene().getWindow();
+
+
         ControllerLogin cl= ControllerLogin.getInstance();
-        cl.validateLogin(bean);
+        cl.validateLogin(bean,stage);
+
+
 
     }
 }
