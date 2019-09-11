@@ -138,6 +138,8 @@ public class TenantAnnounceUIController {
         }
     }
 
+
+    /*****
     public void createStage(TenantAnnounceBean bean) {
 
         titleField.setText(bean.getTitle());
@@ -152,4 +154,5 @@ public class TenantAnnounceUIController {
 
 
     }
+     ******/
 }

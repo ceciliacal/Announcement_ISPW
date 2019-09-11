@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="568.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.TemplateController">
+   <children>
+      <Label fx:id="titleField" layoutX="343.0" layoutY="34.0" prefHeight="29.0" prefWidth="200.0" text="TITLE" textAlignment="CENTER" />
+      <Label fx:id="nameField" layoutX="64.0" layoutY="112.0" text="NAME" />
+      <Label fx:id="cityField" layoutX="353.0" layoutY="112.0" text="CITY" />
+      <Label fx:id="room" layoutX="67.0" layoutY="202.0" text="ROOM" />
+      <Label fx:id="parking" layoutX="416.0" layoutY="424.0" text="PARKING" />
+      <Label fx:id="airConditioning" layoutX="218.0" layoutY="433.0" text="AIR CONDITIONING" />
+      <Label fx:id="animalsAllowed" layoutX="206.0" layoutY="385.0" text="ANIMALS" />
+      <Label fx:id="garden" layoutX="65.0" layoutY="433.0" text="GARDEN" />
+      <Label fx:id="wifi" layoutX="67.0" layoutY="385.0" text="WIFI" />
+      <Label fx:id="idDateDep" layoutX="291.0" layoutY="256.0" text="DATA DEP" />
+      <Label fx:id="idDateArr" layoutX="291.0" layoutY="212.0" text="DATA ARR" />
+      <Label fx:id="people" layoutX="64.0" layoutY="284.0" text="PEOPLE" />
+      <Label fx:id="bathrooms" layoutX="66.0" layoutY="256.0" text="BATH" />
+   </children>
+</AnchorPane>

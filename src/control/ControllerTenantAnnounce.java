@@ -1,6 +1,7 @@
 package control;
 
 import bean.TenantAnnounceBean;
+import boundary.TemplateController;
 import boundary.TenantAnnounceUIController;
 import dao.DBAnnounce;
 import entity.TenantAnnounce;
@@ -40,9 +41,9 @@ public class ControllerTenantAnnounce {
 
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/sample.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Template.fxml"));
             Parent root = loader.load();
-            TenantAnnounceUIController controller = loader.getController();
+            TemplateController controller = loader.getController();
             controller.createStage(bean);
             Scene scene = new Scene(root);
 
