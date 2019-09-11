@@ -1,170 +1,155 @@
 package boundary;
 
 import bean.TenantAnnounceBean;
-import entity.TenantAnnounce;
+import control.ControllerTenantAnnounce;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.control.*;
-
-import javax.management.Notification;
-import java.net.URL;
-import java.util.Calendar;
-import java.util.ResourceBundle;
-
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
-
-public class TenantAnnounceUIController implements Initializable {
-
-
-    private static int yearArr;
-    private static int dayArr;
-    private static int monthArr;
+public class TenantAnnounceUIController {
 
     @FXML
-    private Label lblDateArr, lblDateDep;
+    public TextField titleField, nameField, cityField, room, bathrooms, people;
 
     @FXML
-    private DatePicker idDateArr, idDateDep;
+    public CheckBox wifi, garden, animalsAllowed, airConditioning, parking;
 
     @FXML
-    private Button okBtn;
+    public DatePicker idDateArr, idDateDep;
 
     @FXML
-    private CheckBox wifi, garden, animalsAllowed, airConditioning, parking;
+    public Button okBtn, deleteBtn, publishBtn;
 
-    @FXML
-    private TextField tenantName, city, title;
+    //private renterAnnounceBean bean;
 
-    private TenantAnnounceBean bean;
+    ControllerTenantAnnounce cRA;
 
-    public void setBean(TenantAnnounceBean bean) {
-        this.bean = bean;
-    }
+    private TenantAnnounceBean bean = new TenantAnnounceBean();
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
+    public void clickedPublishBtn(ActionEvent actionEvent) {
 
 
 
+        bean.setTitle(titleField.getText());
+        bean.setName(nameField.getText());
+        bean.setCity(cityField.getText());
+        bean.setRoom(Integer.parseInt(room.getText()));
+        bean.setPeople(Integer.parseInt(people.getText()));
+        bean.setBath(Integer.parseInt(bathrooms.getText()));
 
-    public void publishBtnClicked(ActionEvent actionEvent) {
-
-   bean.setTitle(title.getText());
-   System.out.println("title is" + title);
-
-
-    }
-
-
-
-    public void deleteBtnClicked(ActionEvent actionEvent) {
-    }
-
-    public void selectDateArr(ActionEvent actionEvent) {
-        //lblDateArr.setText(idDateArr.getValue().toString());
-        //Calendar now = Calendar.getInstance();
-        yearArr = (idDateArr.getValue().getYear());
-        dayArr = (idDateArr.getValue().getDayOfMonth());
-        monthArr = (idDateArr.getValue().getMonthValue());
-        //  lblDateArr.setText(String.valueOf(idDateArr.getValue().getYear()));
-        lblDateArr.setText(Integer.toString(yearArr));
-        //System.out.println("l'anno è:" + Integer.toString(year));
-    }
+        //data
+        bean.setDateArr(idDateArr.getValue());
+        bean.setDateDep(idDateDep.getValue());
 
 
-    public void selectDateDep(ActionEvent actionEvent) {
-        //lblDateDep.setText(idDateDep.getValue().toString());
-        int yearDep = (idDateDep.getValue().getYear());
-        int dayDep = (idDateDep.getValue().getDayOfMonth());
-        int monthDep = (idDateDep.getValue().getMonthValue());
-        lblDateDep.setText(Integer.toString(yearArr));
-        if (checkDate(yearDep, monthDep, dayDep) == 0) {
-            System.out.println("ERRORE: scegli una data successiva a quella di partenza!");
-
+        if (wifi.isSelected()) {
+            bean.setWifi("si");
         } else {
-            System.out.println("La data scelta è corretta!");
+            bean.setWifi("no");
         }
+
+        if (garden.isSelected()) {
+            bean.setGarden("si");
+        } else {
+            bean.setGarden("no");
+        }
+
+        if (animalsAllowed.isSelected()) {
+            bean.setAnimals("si");
+        } else {
+            bean.setAnimals("no");
+        }
+
+        if (airConditioning.isSelected()) {
+            bean.setAirConditionig("si");
+        } else {
+            bean.setAirConditionig("no");
+        }
+
+        if (parking.isSelected()) {
+            bean.setParking("si");
+        } else {
+            bean.setParking("no");
+        }
+
+
+        //System.out.println("city e name sono " + bean.getCity() +   bean.getName());
+
+        //una volta inseriti i dati e cliccato su pubblica si chiude la finestra
+        Stage stage = (Stage)titleField.getScene().getWindow();
+        stage.close();
+
+        cRA = ControllerTenantAnnounce.getInstance();
+        cRA.createRenterAnnounce(bean);
     }
 
-    public int checkDate(int year, int month, int day) {
 
-        if (year < yearArr) {
+    public int checkDate() {
+
+        int yearArr = idDateArr.getValue().getYear();
+        int yearDep =  idDateDep.getValue().getYear();
+
+        int monthArr = idDateArr.getValue().getMonthValue();
+        int monthDep=idDateDep.getValue().getMonthValue();
+
+        int dayArr = idDateArr.getValue().getDayOfMonth();
+        int dayDep =  idDateDep.getValue().getDayOfMonth();
+
+        if (yearDep < yearArr) {
+            System.out.println("anno no");
             return 0;
-        } else {
-            if (month < monthArr) {
+        }
+        if (yearDep == yearArr) {
+            if (monthDep < monthArr) {
+                System.out.println("mese no");
                 return 0;
-            } else {
-                if (day < dayArr) {
+            }
+            else if (monthDep == monthArr) {
+                if (dayDep < dayArr) {
+                    System.out.println("giorno no");
                     return 0;
                 }
             }
         }
+        System.out.println("data ok");
         return 1;
+
     }
 
 
-    public void notification(ActionEvent actionEvent) {
-       /* System.out.println("Bottone cliccato");
-        Notifications.create()
-                .title("ciao")
-                .text("notifica")
-                .showWarning(); */
-
-        TrayNotification tray = new TrayNotification();
-        AnimationType type = AnimationType.POPUP;
-        tray.setAnimationType(type);
-        tray.setTitle("ciao");
-        tray.setMessage("come va");
-        tray.setNotificationType(NotificationType.SUCCESS);
-        tray.showAndDismiss(Duration.seconds(50));
+    public void clickedOkButton(ActionEvent actionEvent) {
+        if (checkDate() == 0) {
+            TrayNotification tray = new TrayNotification();
+            AnimationType type = AnimationType.POPUP;
+            tray.setAnimationType(type);
+            tray.setTitle("ERRORE DATA");
+            tray.setMessage("Inserisci una data successiva a quella di arrivo!");
+            tray.setNotificationType(NotificationType.ERROR);
+            tray.showAndDismiss(Duration.seconds(50));
+        }
     }
 
+    public void createStage(TenantAnnounceBean bean) {
+
+        titleField.setText(bean.getTitle());
+        nameField.setText(bean.getName());
+        cityField.setText(bean.getCity());
+        room.setText(String.valueOf(bean.getRoom()));
+        bathrooms.setText(String.valueOf(bean.getBath()));
+        people.setText(String.valueOf(bean.getPeople()));
 
 
+        System.out.println("createStage il bean del title è" + bean.getTitle());
+
+
+    }
 }
-/*
-    public void notifica() {
-       // Notifications.create().title("Title Text").text("Ciao!").showWarning();
-        Notifications notifica = Notifications.create()
-                .title("Ciao")
-                .text("errore")
-                .graphic(null)
-                .hideAfter(Duration.seconds(5))
-                .position(Pos.TOP_RIGHT)
-                .onAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                        System.out.println("Ntifica");
-                    }
-                });
-        notifica.showConfirm();
-    } */
-/*
-    private void notification() {
-         notifica = Notifications.create()
-                .title("ciao")
-                .text("hola")
-                .graphic(null)
-                .hideAfter(Duration.seconds(30))
-                .position(Pos.TOP_RIGHT)
-                .onAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                        System.out.println("notifica");
-
-                    }
-                });
-
-    }*/
-
-

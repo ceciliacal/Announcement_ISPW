@@ -1,25 +1,68 @@
 package control;
 
+import bean.TenantAnnounceBean;
+import boundary.TenantAnnounceUIController;
+import dao.DBAnnounce;
+import entity.TenantAnnounce;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
 public class ControllerTenantAnnounce {
 
-    //SINGLETON
+    private static ControllerTenantAnnounce instance;
 
-    private static ControllerTenantAnnounce instance = null;
+    private ControllerTenantAnnounce(){}
 
-    //Il costruttore private impedisce l'istanza di oggetti da parte di classi esterne
-    private ControllerTenantAnnounce() {};
-
-    //Metodo della classe impiegato per accedere al singleton
-    public synchronized static ControllerTenantAnnounce getInstance() {
-        if(ControllerTenantAnnounce.instance == null) {
-            ControllerTenantAnnounce.instance = new ControllerTenantAnnounce();
+    public  static ControllerTenantAnnounce getInstance(){
+        if(instance==null){
+            instance = new ControllerTenantAnnounce();
         }
         return instance;
     }
 
 
 
+    public void createRenterAnnounce(TenantAnnounceBean bean) {
+        String prova ;
 
+
+        DBAnnounce rAD = new DBAnnounce();
+
+
+        TenantAnnounceBean rAB = new TenantAnnounceBean();
+
+        prova = bean.getTitle();
+        System.out.println("prova è " + prova);
+
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/sample.fxml"));
+            Parent root = loader.load();
+            TenantAnnounceUIController controller = loader.getController();
+            controller.createStage(bean);
+            Scene scene = new Scene(root);
+
+            Stage primaryStage = new Stage();
+
+            primaryStage.setTitle("TenantAnnounce");
+            primaryStage.setScene(scene);
+
+            primaryStage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        TenantAnnounce rA = new TenantAnnounce(bean.getTitle(), bean.getName(), bean.getCity(), bean.getRoom(), bean.getPeople(),bean.getBath(),
+                bean.getDateArr(),bean.getDateDep(), bean.getWifi(),bean.getGarden(),bean.getAnimals(),bean.getAirConditionig(),bean.getParking());
+        rAD.insertNewAnnounce(rA);
+    }
 
 
 
