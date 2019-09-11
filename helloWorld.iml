@@ -11,5 +11,7 @@
     <orderEntry type="library" name="controlsfx-8.40.15" level="project" />
     <orderEntry type="library" name="TrayNotification-master" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.13" level="project" />
+    <orderEntry type="library" name="TrayTester" level="project" />
+    <orderEntry type="library" name="mariadb-java-client-2.4.3" level="project" />
   </component>
 </module>

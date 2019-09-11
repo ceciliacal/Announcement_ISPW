@@ -17,20 +17,22 @@ public class User {
      }
      *****/
 
-    private String username;
+    private String id;
     private String password;
-    private String nome;
-    private String cognome;
+    private String userType;
 
 
-    public User(String username, String password, String nome, String cognome) {
+    public User(String id, String password, String userType) {
 
-        this.nome = nome;
-        this.cognome = cognome;
-        this.username = username;
+        this.id = id;
         this.password = password;
+        this.userType = userType;    //1: locatore, 2:locatario
+
 
     }
+
+}
+/*
 
     public String getNome() {
         return nome;
@@ -40,4 +42,4 @@ public class User {
         return nome + "" + cognome;
     }
 
-}
+*/
