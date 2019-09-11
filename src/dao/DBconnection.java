@@ -8,12 +8,12 @@ public class DBconnection {
 
     private final String USER = "root";
     private final String PASS = "root";
+
     private final String DB_URL = "jdbc:mariadb://127.0.0.1:3406/provadb";
     private final String DRIVER_CLASS_NAME = "org.mariadb.jdbc.Driver";
 
     private Connection connection = null;
-
-    public DBconnection(){}
+    
 
     // Operazione per aprire la connessione con il DB
     public Connection openConnection() {

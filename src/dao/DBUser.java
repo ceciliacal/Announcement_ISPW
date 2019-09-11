@@ -5,95 +5,99 @@ import entity.User;
 import java.sql.*;
 
 public class DBUser {
-    private static String USER = "root";    //user db
-    private static String PASS = "root";    //password db
 
-    private static final String DB_URL = "jdbc:mariadb://127.0.0.1:3406/provadb";   //indirizzi db
-    private static final String DRIVER_CLASS_NAME = "org.mariadb.jdbc.Driver";
+    private DBconnection dbConn = new DBconnection();
 
-    public static User insertNewUser() {
+    public DBUser() {
+    }
 
-        // STEP 1: dichiarazioni
-        Statement stmt = null;
-        Connection conn = null;
-        User u = null;
+    //controllare che utente che effettua il login esiste nel db
+
+    public int checkLogin(String id, String password) {
+        String idLoaded;
+        String pwdLoaded;
+
+        Statement statement = null;
+        //System.out.println("userName=" + id + "   password=" + password);
+
         try {
-            // STEP 2: loading dinamico del driver mysql
-            Class.forName(DRIVER_CLASS_NAME);
+            String query = "SELECT id, password FROM user where id='" + id + "' AND password='" + password + "';";
+            //System.out.println("query=" + query);
+            //statement = dbConn.openConnection().prepareStatement(query);
+            statement = dbConn.openConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = statement.executeQuery(query);
 
-            // STEP 3: apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);     //connessione con database specificato prima
-
-            // STEP 4: creazione ed esecuzione della query
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,  //ResultSet è oggetto che contiene il risultato della query
-                    ResultSet.CONCUR_READ_ONLY);
-
-
-            String query = "INSERT INTO utenti VALUES ('ceci','bho','root2','root2');";
-
-            /*
-            String sql = "SELECT nome, cognome, username, " +             //scrivo query in SQL
-                    "password FROM utenti where username = '"
-                    + username + "' AND password = '" + password + "';";
+           /*         CI DEVO METTERE BEAN (FACCIO SET NEL BEAN E POI CHIAMO CONTROLLO DA CLICKED BUTTON, CHE LI PRENDE CON GET)
+            while (rs.next()) {
+                idLoaded = rs.getString("id");
+                pwdLoaded = rs.getString("password");
+            }
             */
 
-            ResultSet rs = stmt.executeQuery(query);                        //eseguo query
+            if (rs.first() == false) {
+                //ERRORE- da gestire
+                return 0;
+            }
 
-            if (!rs.first()) // rs not empty
-                return null;
+            //in teoria funzione potrebbe finire qui perché se non trova id e pwd vuol dire che sono sbagliati
 
-            boolean moreThanOne = rs.first() && rs.next();                  //mette cursore alla prima riga
-            assert !moreThanOne; // per abilitare le asserzioni, avviare la JVM con il parametro -ea
-            // (Run Configurations -> <configurazione utilizzata per l'avvio del server> -> Arguments -> VM Arguments).
-            // N.B. Le asserzioni andrebbero usate solo per test e debug, non per codice in produzione
+            idLoaded = rs.getString("id");
+            pwdLoaded = rs.getString("password");
 
-            // riposizionamento del cursore.
-            rs.first();
 
-            // lettura delle colonne "by name"
-            String nome = rs.getString("nome");
-            String cognome = rs.getString("cognome");
-            String usernameLoaded = rs.getString("username");
+            if (idLoaded.equals(id) && pwdLoaded.equals(password)) {
+                return 1;
+            } else {
+                return 0;
+            }
 
-            //assert (usernameLoaded.equals(username));
 
-            u = new User(usernameLoaded, "",
-                    nome, cognome);
-
-            // STEP 6: Clean-up dell'ambiente
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException se) {
-            // Errore durante l'apertura della connessione
-            se.printStackTrace();
-        } catch (Exception e) {
-            // Errore nel loading del driver
+        } catch (SQLException e) {
+            System.out.println("Database exception");
             e.printStackTrace();
         } finally {
-            try {
-                if (stmt != null)
-                    stmt.close();
-            } catch (SQLException se2) {
-            }
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
+            dbConn.closeConnection();
         }
 
-        return u;
+        return -1;      //qui non deve arrivarci
     }
 
-    public static User findByNameAndPasswordMockup(String username, String password) {
-        if ("myusername".equals(username) && "mypassword".equals(password))
-            return new User("myusername", "", "Tizio","Caio");
-        else return null;
-    }
+    public String searchUserType(String id, String password){
+        Statement statement = null;
+        String res;
 
-    public static void main(String[] args){
-        User myUser = insertNewUser();
+        try {
+            String query = "SELECT userType FROM user where id='" + id + "' AND password='" + password + "';";
+            statement = dbConn.openConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = statement.executeQuery(query);
+
+
+           /*         CI DEVO METTERE BEAN (FACCIO SET NEL BEAN E POI CHIAMO CONTROLLO DA CLICKED BUTTON, CHE LI PRENDE CON GET)
+            while (rs.next()) {
+                idLoaded = rs.getString("id");
+                pwdLoaded = rs.getString("password");
+            }
+            */
+
+            if (rs.first() == false) {
+                //ERRORE- da gestire
+                return null;
+            }
+
+            //in teoria funzione potrebbe finire qui perché se non trova id e pwd vuol dire che sono sbagliati
+
+            res = rs.getString("userType");
+            return res;
+
+
+        } catch (SQLException e) {
+            System.out.println("Database exception");
+            e.printStackTrace();
+        } finally {
+            dbConn.closeConnection();
+        }
+
+        return null;      //qui non deve arrivarci
+
     }
 }

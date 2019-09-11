@@ -1,5 +1,7 @@
 package boundary;
 
+import bean.UserBean;
+import control.ControllerLogin;
 import entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +17,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import dao.DBUser;
 
 public class LoginUIController implements Initializable {
     @FXML
@@ -35,6 +39,7 @@ public class LoginUIController implements Initializable {
 
     User utente;
 
+    private UserBean bean= new UserBean();
 
 
 
@@ -43,61 +48,17 @@ public class LoginUIController implements Initializable {
     }
 
 
+    public void clickedButton(ActionEvent actionEvent){
 
-    public void Message(ActionEvent actionEvent) {
-        ID = myTxt.textProperty().get();
-        // System.out.println("ID = " + ID);
-        password = myPwd.textProperty().get();
-        // System.out.println("PWD = " + password);
+        bean.setId(myTxt.textProperty().get());
+        bean.setPassword(myPwd.textProperty().get());
 
-        if (check(ID,password) == 1) {
-            System.out.println("Login effettuato!");
-        }
-        else {
-            System.out.println("ERRORE: ID o password errati!");
+        ControllerLogin cl= ControllerLogin.getInstance();
+        cl.validateLogin(bean);
 
-        }
     }
+}
 
 
 
-    public int check(String myID, String myPWD) {
-        utente= new User();
-        ID2 = utente.getID();
-        password2 = utente.getPassword();
-        //System.out.println("myID =" + myID + " myPWD =" + myPWD);
-        //System.out.println("ID2 =" + ID2 + " password2 =" + password2);
 
-        //ID2.equals(myID)
-
-        if (ID2.equals(myID) && password2.equals(myPWD)) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
-
-/*
-        private class KeyHandler implements KeyListener {
-
-
-            @Override
-            public void keyTyped(KeyEvent e) {
-
-            }
-
-            public void keyPressed(KeyEvent ke) {
-                if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
-                    myButton.requestFocus();
-                    = (myButton)ke.getSource();
-                    System.out.println("invio");
-                }
-
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-
-            }
-        } */
-    }
