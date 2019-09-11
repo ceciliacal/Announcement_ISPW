@@ -95,7 +95,7 @@ public class ControllerLogin {
 
             Stage primaryStage = new Stage();
 
-            primaryStage.setTitle("TenantAnnounce");
+            primaryStage.setTitle("Menu");
             primaryStage.setScene(scene);
 
             primaryStage.show();

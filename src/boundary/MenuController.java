@@ -25,15 +25,15 @@ public class MenuController {
 
         if (tipo.equals("1")) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/RenterAnnounceUI.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/ListApartments.fxml"));
                 Parent root = loader.load();
-                RenterAnnounceUIController controller = loader.getController();
+                ListApartmentsController controller = loader.getController();
                 controller.createStage(myBean);
                 Scene scene = new Scene(root);
 
                 Stage primaryStage = new Stage();
 
-                primaryStage.setTitle("TenantAnnounce");
+                primaryStage.setTitle("Select Apartment");
                 primaryStage.setScene(scene);
 
                 primaryStage.show();
@@ -54,7 +54,7 @@ public class MenuController {
 
                 Stage primaryStage = new Stage();
 
-                primaryStage.setTitle("TenantAnnounce");
+                primaryStage.setTitle("Tenant Announce");
                 primaryStage.setScene(scene);
 
                 primaryStage.show();
