@@ -3,7 +3,6 @@ package bean;
 
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,13 +21,12 @@ public class RenterAnnounceBean {
     private LocalDate from;
     private LocalDate to;
     private String title;
-    private HashMap<String, Boolean> services;
+    private String wifi;
+    private  String animals;
+    private String parking;
+    private String airConditioning;
 
-    public RenterAnnounceBean(){
-        this.title="";
-        this.price=0;
-
-    };
+    public RenterAnnounceBean(){};
 
     public void setIdAnn(int myIdAnn){this.idAnn=myIdAnn;}
 
@@ -44,12 +42,13 @@ public class RenterAnnounceBean {
 
     public void setToDate(LocalDate to){this.to=to;}
 
-    public void setWifi(boolean value){ services.replace("wifi",value);}
 
-    public void setAnimals(boolean value){ services.replace("animals",value);}
+    public void setWifi(String value){this.wifi=value;}
 
-    public void setParking(boolean value){ services.replace("parking",value);}
+    public void setAnimals(String value){ this.animals=value;}
 
-    public void setAirConditioning(boolean value){ services.replace("airConditioning",value);}
+    public void setParking(String value){this.parking=value;}
+
+    public void setAirConditioning(String value){this.airConditioning=value;}
 
 }

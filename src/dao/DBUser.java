@@ -3,6 +3,7 @@ package dao;
 import entity.User;
 
 import java.sql.*;
+import static dao.DBQuery.*;
 
 public class DBUser {
 
@@ -13,7 +14,7 @@ public class DBUser {
 
     //controllare che utente che effettua il login esiste nel db
 
-    public int checkLogin(String id, String password) {
+    public int checkLogin2(String id, String password) {
         String idLoaded;
         String pwdLoaded;
 
@@ -62,29 +63,55 @@ public class DBUser {
         return -1;      //qui non deve arrivarci
     }
 
-    public String searchUserType(String id, String password){
-        Statement statement = null;
+    public int checkLogin(String id, String password) {
+        String idLoaded;
+        String pwdLoaded;
+
+        try {
+
+            PreparedStatement statement = dbConn.openConnection().prepareStatement(searchUser);
+            statement.setString(1,id);
+            statement.setString(2,password);
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.first() == false) {
+                //risultato vuoto
+                return 0;
+            }
+
+            idLoaded = rs.getString("id");
+            pwdLoaded = rs.getString("password");
+
+            if (idLoaded.equals(id) && pwdLoaded.equals(password)) {
+                return 1;
+            } else {
+                return 0;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Database exception");
+            e.printStackTrace();
+        } finally {
+            dbConn.closeConnection();
+        }
+
+        return -1;      //qui non deve arrivarci
+    }
+
+
+    public String getUserType(String id, String password){
         String res;
 
         try {
-            String query = "SELECT userType FROM user where id='" + id + "' AND password='" + password + "';";
-            statement = dbConn.openConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = statement.executeQuery(query);
-
-
-           /*         CI DEVO METTERE BEAN (FACCIO SET NEL BEAN E POI CHIAMO CONTROLLO DA CLICKED BUTTON, CHE LI PRENDE CON GET)
-            while (rs.next()) {
-                idLoaded = rs.getString("id");
-                pwdLoaded = rs.getString("password");
-            }
-            */
+            PreparedStatement statement = dbConn.openConnection().prepareStatement(searchUserType);
+            statement.setString(1,id);
+            statement.setString(2,password);
+            ResultSet rs = statement.executeQuery();
 
             if (rs.first() == false) {
                 //ERRORE- da gestire
                 return null;
             }
-
-            //in teoria funzione potrebbe finire qui perché se non trova id e pwd vuol dire che sono sbagliati
 
             res = rs.getString("userType");
             return res;

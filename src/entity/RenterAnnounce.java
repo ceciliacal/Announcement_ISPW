@@ -20,7 +20,10 @@ public class RenterAnnounce {
     private Date from;
     private Date to;
     private String title;
-    private HashMap<String, Integer> services;
+    private String wifi;
+    private String animals;
+    private String parking;
+    private String airConditioning;
 
     public RenterAnnounce(int myIdAnn, int myIdApt, String myTitle, HashMap<String, Integer> myServices, float myPrice, Date from, Date to) {
 
@@ -29,10 +32,6 @@ public class RenterAnnounce {
 
         //title , price, date ecc BHOOO (direttamente dal form?) poi faccio get Text
 
-        services.put("wifi", 0);
-        services.put("animals", 0);
-        services.put("parking", 0);
-        services.put("airConditioning", 0);
 
 
     }

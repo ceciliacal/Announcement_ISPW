@@ -2,12 +2,12 @@ package boundary;
 
 import bean.RenterAnnounceBean;
 import entity.RenterAnnounce;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -34,9 +34,7 @@ public class RenterAnnounceUIController implements Initializable {
     @FXML
     private DatePicker fromDate, toDate;
 
-    private RenterAnnounceBean bean;
-
-    //public void setBean(){this.bean=new RenterAnnounceBean();}
+    private RenterAnnounceBean bean=new RenterAnnounceBean();
 
 
     @Override
@@ -44,32 +42,39 @@ public class RenterAnnounceUIController implements Initializable {
     }
 
 
-    public void publishButtonClicked (ActionEvent actionEvent) throws Exception {
-
+    public void publishButtonClicked(ActionEvent actionEvent) {
         bean.setTitle(title.getText());
         bean.setPrice(Float.parseFloat(price.getText()));
         bean.setFromDate(fromDate.getValue());
         bean.setToDate(toDate.getValue());
-        bean.setWifi(wifi.isSelected());
-        bean.setAnimals(animalsAllowed.isSelected());
-        bean.setParking(parking.isSelected());
-        bean.setAirConditioning(airConditioning.isSelected());
 
-        System.out.println("bean.title="+bean.getTitle());
-    }
+        if (wifi.isSelected()){
+            bean.setWifi("si");
+        }
+        else{
+            bean.setWifi("no");
+        }
 
+        if (animalsAllowed.isSelected()){
+            bean.setAnimals("si");
+        }
+        else{
+            bean.setAnimals("no");
+        }
 
-    public void publishButtonClicked(javafx.event.ActionEvent event) {
-        RenterAnnounceBean rab= new RenterAnnounceBean();
+        if (parking.isSelected()){
+            bean.setParking("si");
+        }
+        else{
+            bean.setParking("no");
+        }
 
-        bean.setTitle(title.getText());
-        bean.setPrice(Float.parseFloat(price.getText()));
-        bean.setFromDate(fromDate.getValue());
-        bean.setToDate(toDate.getValue());
-        bean.setWifi(wifi.isSelected());
-        bean.setAnimals(animalsAllowed.isSelected());
-        bean.setParking(parking.isSelected());
-        bean.setAirConditioning(airConditioning.isSelected());
+        if (airConditioning.isSelected()){
+            bean.setAirConditioning("si");
+        }
+        else{
+            bean.setAirConditioning("no");
+        }
 
         System.out.println("bean.title="+bean.getTitle());
     }
