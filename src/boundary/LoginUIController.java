@@ -11,14 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import javax.swing.*;
-import javax.swing.text.View;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import dao.DBUser;
 
 public class LoginUIController implements Initializable {
     @FXML

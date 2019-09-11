@@ -2,8 +2,7 @@ package control;
 
 import bean.TenantAnnounceBean;
 import boundary.TemplateController;
-import boundary.TenantAnnounceUIController;
-import dao.DBAnnounce;
+import dao.DBFunctions;
 import entity.TenantAnnounce;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,7 +30,7 @@ public class ControllerTenantAnnounce {
         String prova ;
 
 
-        DBAnnounce rAD = new DBAnnounce();
+        DBFunctions rAD = new DBFunctions();
 
 
         TenantAnnounceBean rAB = new TenantAnnounceBean();
@@ -62,7 +61,7 @@ public class ControllerTenantAnnounce {
 
         TenantAnnounce rA = new TenantAnnounce(bean.getTitle(), bean.getName(), bean.getCity(), bean.getRoom(), bean.getPeople(),bean.getBath(),
                 bean.getDateArr(),bean.getDateDep(), bean.getWifi(),bean.getGarden(),bean.getAnimals(),bean.getAirConditionig(),bean.getParking());
-        rAD.insertNewAnnounce(rA);
+        rAD.insertNewTenantAnnounce(rA);
     }
 
 

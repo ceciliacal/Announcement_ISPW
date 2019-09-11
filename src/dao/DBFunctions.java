@@ -1,67 +1,18 @@
 package dao;
 
+import entity.TenantAnnounce;
 import entity.User;
 
 import java.sql.*;
 import static dao.DBQuery.*;
 
-public class DBUser {
+public class DBFunctions {
 
     private DBconnection dbConn = new DBconnection();
 
-    public DBUser() {
-    }
+    public DBFunctions() {}
 
     //controllare che utente che effettua il login esiste nel db
-
-    public int checkLogin2(String id, String password) {
-        String idLoaded;
-        String pwdLoaded;
-
-        Statement statement = null;
-        //System.out.println("userName=" + id + "   password=" + password);
-
-        try {
-            String query = "SELECT id, password FROM user where id='" + id + "' AND password='" + password + "';";
-            //System.out.println("query=" + query);
-            //statement = dbConn.openConnection().prepareStatement(query);
-            statement = dbConn.openConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = statement.executeQuery(query);
-
-           /*         CI DEVO METTERE BEAN (FACCIO SET NEL BEAN E POI CHIAMO CONTROLLO DA CLICKED BUTTON, CHE LI PRENDE CON GET)
-            while (rs.next()) {
-                idLoaded = rs.getString("id");
-                pwdLoaded = rs.getString("password");
-            }
-            */
-
-            if (rs.first() == false) {
-                //ERRORE- da gestire
-                return 0;
-            }
-
-            //in teoria funzione potrebbe finire qui perché se non trova id e pwd vuol dire che sono sbagliati
-
-            idLoaded = rs.getString("id");
-            pwdLoaded = rs.getString("password");
-
-
-            if (idLoaded.equals(id) && pwdLoaded.equals(password)) {
-                return 1;
-            } else {
-                return 0;
-            }
-
-
-        } catch (SQLException e) {
-            System.out.println("Database exception");
-            e.printStackTrace();
-        } finally {
-            dbConn.closeConnection();
-        }
-
-        return -1;      //qui non deve arrivarci
-    }
 
     public int checkLogin(String id, String password) {
         String idLoaded;
@@ -98,7 +49,6 @@ public class DBUser {
         return -1;      //qui non deve arrivarci
     }
 
-
     public String getUserType(String id, String password){
         String res;
 
@@ -126,5 +76,35 @@ public class DBUser {
 
         return null;      //qui non deve arrivarci
 
+    }
+
+    public boolean insertNewTenantAnnounce(TenantAnnounce announce) {
+
+        try {
+
+
+            PreparedStatement ps = dbConn.openConnection().prepareStatement(insertAnnounce);
+            ps.setString(1,announce.getTitle());
+            ps.setString(2, announce.getName());
+            ps.setString(3, announce.getCity());
+            ps.setInt(4,announce.getRoom());
+            ps.setInt(5,announce.getPeople());
+            ps.setInt(6,announce.getBath());
+            ps.setDate(7, Date.valueOf(announce.getDateArr()));
+            ps.setDate(8,Date.valueOf(announce.getDateDep()));
+            ps.setString(9, announce.getWifi());
+            ps.setString(10,announce.getGarden());
+            ps.setString(11,announce.getAnimals());
+            ps.setString(12,announce.getAirConditionig());
+            ps.setString(13,announce.getParking());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("DB exception");
+            e.printStackTrace();
+            return false;
+        } finally {
+            dbConn.closeConnection();
+        }
+        return true;
     }
 }
