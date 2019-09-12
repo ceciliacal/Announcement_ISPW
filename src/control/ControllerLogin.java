@@ -96,7 +96,6 @@ public class ControllerLogin {
             Scene scene = new Scene(root);
 
             Stage primaryStage = new Stage();
-
             primaryStage.setTitle("Menu");
             primaryStage.setScene(scene);
 
@@ -109,5 +108,23 @@ public class ControllerLogin {
 
     }
 
+    /*
+    public void startUC(Stage primaryStage) {
+
+        //Stage primaryStage = new Stage();
+
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("LoginUI.fxml"));
+            primaryStage.setTitle("Login ");
+            primaryStage.setScene(new Scene(root, 800, 800));
+            primaryStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    */
 }
 
