@@ -26,14 +26,14 @@ public class ControllerTenantAnnounce {
 
 
 
-    public void createRenterAnnounce(TenantAnnounceBean bean) {
+    public void createTenantAnnounce(TenantAnnounceBean bean) {
         String prova ;
 
 
-        DBFunctions rAD = new DBFunctions();
+        DBFunctions dbf = new DBFunctions();
 
 
-        TenantAnnounceBean rAB = new TenantAnnounceBean();
+        TenantAnnounceBean tab = new TenantAnnounceBean();
 
         prova = bean.getTitle();
         System.out.println("prova è " + prova);
@@ -59,9 +59,9 @@ public class ControllerTenantAnnounce {
         }
 
 
-        TenantAnnounce rA = new TenantAnnounce(bean.getTitle(), bean.getName(), bean.getCity(), bean.getRoom(), bean.getPeople(),bean.getBath(),
+        TenantAnnounce myTenantAnnounce = new TenantAnnounce(bean.getTitle(), bean.getName(), bean.getCity(), bean.getRoom(), bean.getPeople(),bean.getBath(),
                 bean.getDateArr(),bean.getDateDep(), bean.getWifi(),bean.getGarden(),bean.getAnimals(),bean.getAirConditionig(),bean.getParking());
-        rAD.insertNewTenantAnnounce(rA);
+        dbf.insertNewTenantAnnounce(myTenantAnnounce);
     }
 
 

@@ -1,6 +1,7 @@
 package boundary;
 
 import bean.UserBean;
+import entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,10 +22,10 @@ public class MenuController {
         Stage stage = (Stage)title.getScene().getWindow();
         stage.close();
 
-        String tipo = myBean.getUserType();
+        String tipo = myBean.getUserType(); //invece di bean passo user entity
         String userId = myBean.getId();
 
-        if (tipo.equals("1")) {
+        if (tipo.equals("1")) { // locatore
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/ListApartments.fxml"));
                 Parent root = loader.load();
@@ -34,7 +35,7 @@ public class MenuController {
 
                 Stage primaryStage = new Stage();
 
-                primaryStage.setTitle("Select Apartment");
+                primaryStage.setTitle("List Apartments");
                 primaryStage.setScene(scene);
 
                 primaryStage.show();
@@ -45,7 +46,7 @@ public class MenuController {
             }
 
         }
-        else if (tipo.equals("2")) {
+        else if (tipo.equals("2")) {    //locatario
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/TenantAnnounce.fxml"));
                 Parent root = loader.load();
@@ -70,7 +71,7 @@ public class MenuController {
     }
 
 
-    public void createStage(UserBean bean) {
+    public void createStage(User bean) {
         String userType = bean.getUserType();
 
         if (userType.equals("1")) {

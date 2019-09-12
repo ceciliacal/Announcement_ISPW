@@ -1,5 +1,6 @@
 package dao;
 
+import bean.ApartmentBean;
 import bean.UserBean;
 import entity.RenterAnnounce;
 import entity.TenantAnnounce;
@@ -120,28 +121,40 @@ public class DBFunctions {
 
     }
 
-    public ArrayList<String> searchUserApartments(ArrayList<String> idApartments, String idOwner){
+    public ArrayList<ApartmentBean> searchUserApartments(String idOwner){
 
         try {
-            ArrayList<String> nameApartments = new ArrayList<>();
+            ArrayList<ApartmentBean> nameApartments = new ArrayList<>();
 
             PreparedStatement statement = dbConn.openConnection().prepareStatement(searchApartments);
             statement.setString(1,idOwner);
-            ResultSet rs = statement.executeQuery();
+            ResultSet rs = statement.executeQuery();   //restituisce tabella con tutti gli appartameni relativi a userID
 
             System.out.println("DB- subito dopo query");
 
-            while (rs.next()) {
-                idApartments.add(rs.getString("idApt"));
-                nameApartments.add(rs.getString("name"));
+
+
+            while (rs.next()) { //n righe
+                ApartmentBean myApartmentBean = new ApartmentBean();
+                myApartmentBean.setIdApt(Integer.parseInt(rs.getString("idApt")));
+
+                myApartmentBean.setName(rs.getString("name"));
+                myApartmentBean.setAddress(rs.getString("address"));
+                myApartmentBean.setIdOwner(rs.getString("idOwner"));
+                //myApartmentBean.setPictures(rs.getString("pictures"));
+                myApartmentBean.setDescription(rs.getString("description"));
+                myApartmentBean.setEvaluation(Float.parseFloat(rs.getString("evaluation")));
+                myApartmentBean.setTaxes(Float.parseFloat(rs.getString("taxes")));
+                myApartmentBean.setCapacity(Integer.parseInt(rs.getString("capacity")));
+                myApartmentBean.setArea(Float.parseFloat(rs.getString("area")));
+
+                nameApartments.add(myApartmentBean);
+                System.out.println("sto nel while del db - idApt= "+myApartmentBean.getIdApt());
+
             }
 
             System.out.println("DB- subito dopo rs.next");
 
-             for(int i=0;i<idApartments.size();i++){
-                System.out.println(idApartments.get(i));
-                System.out.println(nameApartments.get(i));
-            }
             System.out.println("Gli id ed i nomi degli appartamenti sono stati caricati ");
 
             return nameApartments;

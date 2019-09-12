@@ -1,7 +1,9 @@
 package boundary;
 
+import bean.ApartmentBean;
 import bean.RenterAnnounceBean;
 import control.ControllerRenterAnnounce;
+import entity.Apartment;
 import entity.RenterAnnounce;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,17 +16,18 @@ import java.util.ResourceBundle;
 
 public class RenterAnnounceUIController implements Initializable {
 
+    public Label address;
+    public Label description;
+    public Label capacity;
+    public Label area;
     @FXML
-    private TextField title, address, price;
+    private TextField title, price;
 
     @FXML
     private Button deleteButton, publishButton;
 
     @FXML
     private ImageView image1, image2, image3, image4, image5;
-
-    @FXML
-    private TextArea description;
 
     @FXML
     private Label servicesLabel, dateLabel, priceLabel, peopleLabel, areaLabel, fromLabel, toLabel;
@@ -81,5 +84,14 @@ public class RenterAnnounceUIController implements Initializable {
 
         ControllerRenterAnnounce cra= ControllerRenterAnnounce.getInstance();
         cra.validateAnnounce(bean);
+    }
+
+    public void createStage(Apartment myApartment) {
+
+
+        address.setText(myApartment.getAddress());
+        description.setText(myApartment.getDescription());
+        capacity.setText(String.valueOf(myApartment.getCapacity()));
+        area.setText(String.valueOf(myApartment.getArea()));
     }
 }

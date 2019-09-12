@@ -10,10 +10,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import tray.animations.AnimationType;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
 
 public class TenantAnnounceUIController {
 
@@ -31,7 +27,7 @@ public class TenantAnnounceUIController {
 
     //private renterAnnounceBean bean;
 
-    ControllerTenantAnnounce cRA;
+    ControllerTenantAnnounce cta;
 
     private TenantAnnounceBean bean = new TenantAnnounceBean();
 
@@ -90,8 +86,8 @@ public class TenantAnnounceUIController {
         Stage stage = (Stage)titleField.getScene().getWindow();
         stage.close();
 
-        cRA = ControllerTenantAnnounce.getInstance();
-        cRA.createRenterAnnounce(bean);
+        cta = ControllerTenantAnnounce.getInstance();
+        cta.createTenantAnnounce(bean);
     }
 
 

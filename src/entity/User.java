@@ -31,6 +31,17 @@ public class User {
 
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
 }
 /*
 

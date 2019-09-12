@@ -3,6 +3,7 @@ package control;
 import bean.ApartmentBean;
 import bean.RenterAnnounceBean;
 import bean.UserBean;
+import entity.Apartment;
 import entity.RenterAnnounce;
 import dao.DBFunctions;
 
@@ -36,23 +37,23 @@ public class ControllerRenterAnnounce {
 
     }
 
-    public ArrayList<String> createApartmentsList(UserBean bean){
-        //List <String> nameApartmentsList=null;
-        ArrayList<String> nameApartmentsList = new ArrayList<>();
+    public ArrayList<ApartmentBean> createApartmentsList(UserBean bean){
+        //List <String> apartmentsList=null;
+        ArrayList<ApartmentBean> apartmentsList;
 
         System.out.println("sto nel Control");
 
         DBFunctions dbf= new DBFunctions();
-        nameApartmentsList=dbf.searchUserApartments(idApartments,bean.getId());
+        apartmentsList=dbf.searchUserApartments(bean.getId());
 
-        System.out.println("idApartments.size()="+idApartments.size());
-        System.out.println("nameApartmentsList.size()="+nameApartmentsList.size());
+        //System.out.println("idApartments.size()="+idApartments.size());
+        System.out.println("apartmentsList.size()="+apartmentsList.size());
 
-        for(int i=0;i<idApartments.size();i++){
-            System.out.println("C: "+idApartments.get(i));
-            System.out.println("C: "+nameApartmentsList.get(i));
+        for(int i=0;i<apartmentsList.size();i++){
+            System.out.println("C: "+apartmentsList.get(i).getIdApt());
+            System.out.println("C: "+apartmentsList.get(i).getName());
         }
-        return nameApartmentsList;
+        return apartmentsList;
     }
 
 
@@ -64,5 +65,10 @@ public class ControllerRenterAnnounce {
     public void cercoAppartamento(ApartmentBean aptBean) {
         DBFunctions dbf= new DBFunctions();
         dbf.searchApartmentById(aptBean.getIdApt());
+    }
+
+    public Apartment createApartment(ApartmentBean aptBean) {
+        Apartment myApartment= new Apartment(aptBean.getIdApt(),aptBean.getName(),aptBean.getAddress(),aptBean.getIdOwner(),aptBean.getPictures(),aptBean.getDescription(),aptBean.getEvaluation(),aptBean.getTaxes(),aptBean.getCapacity(),aptBean.getArea());
+        return myApartment;
     }
 }

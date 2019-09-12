@@ -32,15 +32,49 @@ public class ApartmentBean {
 
     public void setDescription(String myDescription){this.description=myDescription;}
 
+    public void setEvaluation(float evaluation) { this.evaluation = evaluation; }
+
     public void setTaxes(float myTaxes){this.taxes=myTaxes;}
 
     public void setCapacity(int myCapacity){this.capacity=myCapacity;}
 
     public void setArea(float myArea){this.area=myArea;}
 
-    //public void setServices(Dictionary<String,String> myServices){this.services=myServices;}
-
     //get
-    public int getIdApt(){return idApt;}
+    public int getIdApt(){return this.idApt;}
+
+    public String getName(){return this.name;}
+
+    public String getAddress() {
+        return this.address;
+    }
+
+    public float getArea() {
+        return this.area;
+    }
+
+    public float getEvaluation() {
+        return this.evaluation;
+    }
+
+    public float getTaxes() {
+        return this.taxes;
+    }
+
+    public int getCapacity() {
+        return this.capacity;
+    }
+
+    public List<String> getPictures() {
+        return this.pictures;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public String getIdOwner() {
+        return this.idOwner;
+    }
 
 }

@@ -5,6 +5,7 @@ import boundary.Main;
 import boundary.MenuController;
 import boundary.TemplateController;
 import dao.DBFunctions;
+import entity.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -68,14 +69,15 @@ public class ControllerLogin {
         System.out.println("userType=" + userType);
 
         bean.setUserType(userType);
+        User myUser= new User(bean.getId(),bean.getPassword(),bean.getUserType());
 
         //System.out.println("bean userType è " + bean.getUserType());
 
         Main notify = new Main();
 
-        if (userType.equals("1")) {
+        if (myUser.getUserType().equals("1")) {         //locatore
             notify.notification(1, "LOGIN EFFETTUATO", "Sei entrato come LOCATORE");
-        } else if (userType.equals("2")) {
+        } else if (myUser.getUserType().equals("2")) {  //locatario
             notify.notification(1, "LOGIN EFFETTUATO", "Sei entrato come LOCATARIO");
         }
 
@@ -90,7 +92,7 @@ public class ControllerLogin {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Menu.fxml"));
             Parent root = loader.load();
             MenuController controller = loader.getController();
-            controller.createStage(bean);
+            controller.createStage(myUser);
             Scene scene = new Scene(root);
 
             Stage primaryStage = new Stage();
