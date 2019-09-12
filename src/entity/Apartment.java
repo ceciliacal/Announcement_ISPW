@@ -6,7 +6,7 @@ import java.util.List;
 public class Apartment {
 
     private int idApt;
-    private String name;
+    private String name;                //apartment name 
     private String address;
     private String idOwner;
     private List<String> pictures;

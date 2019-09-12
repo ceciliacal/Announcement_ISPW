@@ -28,20 +28,19 @@ public class RenterAnnounceBean {
 
     public RenterAnnounceBean(){};
 
+    //set
+
     public void setIdAnn(int myIdAnn){this.idAnn=myIdAnn;}
 
     public void setIdApt(int myIdApt){this.idApt=myIdApt;}
 
     public void setTitle(String myTitle){this.title=myTitle;}
 
-    public String getTitle(){return title;}
-
     public void setPrice(float myPrice){this.price=myPrice;}
 
     public void setFromDate(LocalDate from){ this.from=from;}
 
     public void setToDate(LocalDate to){this.to=to;}
-
 
     public void setWifi(String value){this.wifi=value;}
 
@@ -50,5 +49,28 @@ public class RenterAnnounceBean {
     public void setParking(String value){this.parking=value;}
 
     public void setAirConditioning(String value){this.airConditioning=value;}
+
+    //get
+    public int getIdApt(){return this.idApt;}
+
+    public int getIdAnn(){return this.idAnn;}
+
+    public String getTitle(){return this.title;}
+
+    public float getPrice(){return this.price;};
+
+    public LocalDate getFromDate(){return this.from;}
+
+    public LocalDate getToDate(){return this.to;}
+
+    public String getWifi(){return this.wifi;}
+
+    public String getAnimals(){return this.animals;}
+
+    public String getParking(){return this.parking;}
+
+    public String getAirConditioning(){return this.airConditioning;}
+
+
 
 }

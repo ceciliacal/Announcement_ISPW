@@ -25,7 +25,8 @@ public class RenterAnnounce {
     private String parking;
     private String airConditioning;
 
-    public RenterAnnounce(int myIdAnn, int myIdApt, String myTitle, HashMap<String, Integer> myServices, float myPrice, Date from, Date to) {
+
+    public RenterAnnounce(int myIdAnn, int myIdApt, String myTitle, float myPrice, Date from, Date to, String wifi, String animals, String parking, String airConditioning) {
 
         this.idAnn = myIdAnn;
         this.idApt = myIdApt;

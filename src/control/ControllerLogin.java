@@ -31,8 +31,8 @@ public class ControllerLogin {
         int res;
         String userType;
 
-        DBFunctions dbU = new DBFunctions();
-        res = dbU.checkLogin(bean.getId(), bean.getPassword()); //controlla risultato e poi crea user usando get
+        DBFunctions dbf = new DBFunctions();
+        res = dbf.checkLogin(bean.getId(), bean.getPassword()); //controlla risultato e poi crea user usando get
 
 
         //NOTIFICHE

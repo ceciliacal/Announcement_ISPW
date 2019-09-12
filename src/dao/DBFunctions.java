@@ -1,9 +1,14 @@
 package dao;
 
+import bean.UserBean;
+import entity.RenterAnnounce;
 import entity.TenantAnnounce;
 import entity.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import static dao.DBQuery.*;
 
 public class DBFunctions {
@@ -106,5 +111,58 @@ public class DBFunctions {
             dbConn.closeConnection();
         }
         return true;
+    }
+
+    public void insertNewRenterAnnounce(RenterAnnounce announce){
+
+
+
+
+    }
+
+    public ArrayList<String> searchUserApartments(ArrayList<String> idApartments, String idOwner){
+
+        try {
+            ArrayList<String> nameApartments = new ArrayList<>();
+
+            PreparedStatement statement = dbConn.openConnection().prepareStatement(searchApartments);
+            statement.setString(1,idOwner);
+            ResultSet rs = statement.executeQuery();
+
+            System.out.println("DB- subito dopo query");
+
+            while (rs.next()) {
+                idApartments.add(rs.getString("idApt"));
+                nameApartments.add(rs.getString("name"));
+            }
+
+            System.out.println("DB- subito dopo rs.next");
+
+             for(int i=0;i<idApartments.size();i++){
+                System.out.println(idApartments.get(i));
+                System.out.println(nameApartments.get(i));
+            }
+            System.out.println("Gli id ed i nomi degli appartamenti sono stati caricati ");
+
+            return nameApartments;
+
+
+        } catch (SQLException e) {
+            System.out.println("Database exception");
+            e.printStackTrace();
+        } finally {
+            dbConn.closeConnection();
+        }
+
+        return null;      //qui non deve arrivarci
+
+
+    }
+
+
+
+
+    public void searchApartmentById(int idApt) {
+        //scrivi
     }
 }

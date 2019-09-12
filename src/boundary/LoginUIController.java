@@ -49,6 +49,9 @@ public class LoginUIController implements Initializable {
         bean.setPassword(myPwd.textProperty().get());
 
         Stage stage = (Stage)myTxt.getScene().getWindow();
+        //prendo stage attuale e lo passo come parametro a validateLogin per andare a
+        //chiudere lo stage una volta che il login è stato effettuato (quindi verificato).
+        //se login non avviene, lo stage non va chiuso perché utente deve reinserire credenziali.
 
 
         ControllerLogin cl= ControllerLogin.getInstance();

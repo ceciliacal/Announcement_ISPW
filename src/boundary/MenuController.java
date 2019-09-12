@@ -22,13 +22,14 @@ public class MenuController {
         stage.close();
 
         String tipo = myBean.getUserType();
+        String userId = myBean.getId();
 
         if (tipo.equals("1")) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/ListApartments.fxml"));
                 Parent root = loader.load();
                 ListApartmentsController controller = loader.getController();
-                controller.createStage(myBean);
+                controller.createListView(myBean);
                 Scene scene = new Scene(root);
 
                 Stage primaryStage = new Stage();
@@ -79,6 +80,7 @@ public class MenuController {
             title.setText("MENU LOCATARIO");
         }
         myBean.setUserType(userType);
+        myBean.setId(bean.getId());
     }
 
 
