@@ -33,6 +33,14 @@ public class RenterAnnounceBean {
 
     public void setIdAnn(int myIdAnn){this.idAnn=myIdAnn;}
 
+    public void setAddress(String myAddress){this.address=myAddress;}
+
+    public void setDescription(String myDescription){this.description=myDescription;}
+
+    public void setCapacity(int myCapacity){this.capacity=myCapacity;}
+
+    public void setArea(float myArea){this.area=myArea;}
+
     public void setIdApt(int myIdApt){this.idApt=myIdApt;}
 
     public void setTitle(String myTitle){this.title=myTitle;}
@@ -80,5 +88,12 @@ public class RenterAnnounceBean {
 
     public String getIdOwner(){return this.idOwner;}
 
+    public String getAddress() {return this.address;}
 
+    public String getDescription() { return this.description; }
+
+
+    public int getCapacity() {return this.capacity;}
+
+    public float getArea() {return this.area;}
 }

@@ -85,6 +85,7 @@ public class RenterAnnounceUIController implements Initializable {
         System.out.println("bean.title="+bean.getTitle());
 
         ControllerRenterAnnounce cra= ControllerRenterAnnounce.getInstance();
+        System.out.println("sto in Controller");
         cra.validateAnnounce(bean,myApt);
     }
 
