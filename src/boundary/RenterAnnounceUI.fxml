@@ -10,16 +10,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="598.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.RenterAnnounceUIController">
+<AnchorPane prefHeight="598.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.RenterAnnounceUIController">
    <children>
       <SplitPane dividerPositions="0.14261744966442952" orientation="VERTICAL" prefHeight="598.0" prefWidth="822.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <TextField id="idTitle" fx:id="title" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="518.0" text="Inserisci Titolo dell'Annuncio" />
-                  <Button id="idDeleteButton" fx:id="deleteButton" layoutX="557.0" layoutY="26.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="99.0" text="Rimuovi" />
                   <Button id="idPublishButton" fx:id="publishButton" layoutX="675.0" layoutY="26.0" mnemonicParsing="false" onAction="#publishButtonClicked" prefHeight="40.0" prefWidth="99.0" text="Pubblica" />
-                  <Label fx:id="address" layoutX="14.0" layoutY="58.0" prefHeight="17.0" prefWidth="326.0" text="Indirizzo" />
+                  <Label fx:id="address" layoutX="72.0" layoutY="58.0" prefHeight="17.0" prefWidth="326.0" text="Inserisci Indirizzo" />
+                  <Label layoutX="18.0" layoutY="58.0" text="Indirizzo:" />
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
@@ -120,7 +120,10 @@
                               <DatePicker fx:id="toDate" layoutX="579.0" layoutY="113.0" />
                               <Label fx:id="capacity" layoutX="488.0" layoutY="51.0" prefHeight="17.0" prefWidth="55.0" text="n" />
                               <Label fx:id="area" layoutX="488.0" layoutY="79.0" prefHeight="17.0" prefWidth="55.0" text="n" />
-                              <Label fx:id="description" alignment="TOP_LEFT" layoutX="21.0" layoutY="41.0" prefHeight="170.0" prefWidth="269.0" text="Descrizione" />
+                              <Label fx:id="description" alignment="TOP_LEFT" layoutX="21.0" layoutY="41.0" prefHeight="106.0" prefWidth="294.0" text="Inserisci una descrizione dell'immobile." />
+                              <Label layoutX="21.0" layoutY="19.0" text="Descrizione:" />
+                              <Label layoutX="25.0" layoutY="174.0" text="Proprietario:" />
+                              <Label fx:id="ownerName" layoutX="99.0" layoutY="174.0" prefHeight="17.0" prefWidth="73.0" text="Label" />
                            </children></AnchorPane>
                     </items>
                   </SplitPane>

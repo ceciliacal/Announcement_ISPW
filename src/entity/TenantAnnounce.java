@@ -16,7 +16,7 @@ public class TenantAnnounce {
     private String wifi;
     private String garden;
     private String animals;
-    private String airConditionig;
+    private String airConditioning;
     private String parking;
 
     public TenantAnnounce(String title, String name, String city, int room, int people, int bath, LocalDate dateArr, LocalDate dateDep, String wifi, String garden,
@@ -32,7 +32,7 @@ public class TenantAnnounce {
         this.wifi = wifi;
         this.garden = garden;
         this.animals = animals;
-        this.airConditionig = airConditionig;
+        this.airConditioning = airConditionig;
         this.parking = parking;
     }
 
@@ -125,12 +125,12 @@ public class TenantAnnounce {
         return animals;
     }
 
-    public void setAirConditionig(String airConditionig) {
-        this.airConditionig = airConditionig;
+    public void setAirConditioning(String airConditioning) {
+        this.airConditioning = airConditioning;
     }
 
-    public String getAirConditionig() {
-        return airConditionig;
+    public String getAirConditioning() {
+        return airConditioning;
     }
 
     public void setParking(String parking) {

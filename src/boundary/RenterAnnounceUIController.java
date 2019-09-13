@@ -2,6 +2,7 @@ package boundary;
 
 import bean.ApartmentBean;
 import bean.RenterAnnounceBean;
+import bean.UserBean;
 import control.ControllerRenterAnnounce;
 import entity.Apartment;
 import entity.RenterAnnounce;
@@ -20,11 +21,12 @@ public class RenterAnnounceUIController implements Initializable {
     public Label description;
     public Label capacity;
     public Label area;
+    //public Label ownerName;
     @FXML
     private TextField title, price;
 
     @FXML
-    private Button deleteButton, publishButton;
+    private Button publishButton;
 
     @FXML
     private ImageView image1, image2, image3, image4, image5;
@@ -39,7 +41,7 @@ public class RenterAnnounceUIController implements Initializable {
     private DatePicker fromDate, toDate;
 
     private RenterAnnounceBean bean=new RenterAnnounceBean();
-
+    private Apartment myApt;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -83,15 +85,20 @@ public class RenterAnnounceUIController implements Initializable {
         System.out.println("bean.title="+bean.getTitle());
 
         ControllerRenterAnnounce cra= ControllerRenterAnnounce.getInstance();
-        cra.validateAnnounce(bean);
+        cra.validateAnnounce(bean,myApt);
     }
 
-    public void createStage(Apartment myApartment) {
+    //stage su cui inserisco i dati e ci sono già i dati dell'appartamento presi dal DB
+    //dati che già ho nel momento in cui vado a cliccare "pubblica"
 
+    public void createStage(Apartment myApartment, UserBean myUserBean) {       //qua ci dovrebbe andare USER
 
+        myApt = myApartment;
         address.setText(myApartment.getAddress());
         description.setText(myApartment.getDescription());
         capacity.setText(String.valueOf(myApartment.getCapacity()));
         area.setText(String.valueOf(myApartment.getArea()));
+        //ownerName.setText(myUserBean.getNickname());
+
     }
 }

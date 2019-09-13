@@ -25,6 +25,7 @@ public class RenterAnnounceBean {
     private  String animals;
     private String parking;
     private String airConditioning;
+    //private String nickname;
 
     public RenterAnnounceBean(){};
 
@@ -50,6 +51,10 @@ public class RenterAnnounceBean {
 
     public void setAirConditioning(String value){this.airConditioning=value;}
 
+    //public void setNickname(String myNickname){this.nickname=myNickname;}
+
+    public void setIdOwner(String myId){this.idOwner=myId;}
+
     //get
     public int getIdApt(){return this.idApt;}
 
@@ -71,6 +76,9 @@ public class RenterAnnounceBean {
 
     public String getAirConditioning(){return this.airConditioning;}
 
+    //public String getNickname(){return this.nickname;}
+
+    public String getIdOwner(){return this.idOwner;}
 
 
 }

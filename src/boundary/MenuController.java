@@ -71,7 +71,7 @@ public class MenuController {
     }
 
 
-    public void createStage(User bean) {
+    public void createStage(User bean) {        //QUA VA USATA ENTITY "USER" E NON BEAN!!
         String userType = bean.getUserType();
 
         if (userType.equals("1")) {

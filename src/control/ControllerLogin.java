@@ -44,8 +44,6 @@ public class ControllerLogin {
             System.out.println("Login effettuato!");
             checkUserType(bean,stage);
 
-            //notify.notification(1,"LOGIN EFFETTUATO", "prosegui");
-
 
         } else {
 
@@ -63,15 +61,19 @@ public class ControllerLogin {
     public void checkUserType(UserBean bean, Stage stage) {
 
         String userType;
-        DBFunctions dbU = new DBFunctions();
+        //String nickname;
 
-        userType = dbU.getUserType(bean.getId(), bean.getPassword());
+        DBFunctions dbf = new DBFunctions();
+
+        userType = dbf.getUserType(bean.getId(), bean.getPassword());
+        //nickname= dbf.searchNickname(bean.getId());
+
         System.out.println("userType=" + userType);
+       // System.out.println("nickname=" + nickname);
 
         bean.setUserType(userType);
+        //bean.setNickname(nickname);
         User myUser= new User(bean.getId(),bean.getPassword(),bean.getUserType());
-
-        //System.out.println("bean userType è " + bean.getUserType());
 
         Main notify = new Main();
 

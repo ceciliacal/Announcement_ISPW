@@ -28,6 +28,7 @@ public class ListApartmentsController {
     public Button okBtn;
 
     private ApartmentBean aptBean= new ApartmentBean();
+    private UserBean myUserBean= new UserBean();
     ArrayList<ApartmentBean> apartmentsList;
 
     public void clickedOkBtn(ActionEvent actionEvent) {         //prepara dati dell'annuncio selezionato nella listView
@@ -41,23 +42,22 @@ public class ListApartmentsController {
         System.out.println("element="+aptIndex);
         ControllerRenterAnnounce cra= ControllerRenterAnnounce.getInstance();
 
-        cra = ControllerRenterAnnounce.getInstance();
         Apartment myApartment=cra.createApartment(aptBean);
 
         System.out.println("idApt= "+myApartment.getIdApt()+"   descrizione= "+myApartment.getDescription());
 
-
+        //apro stage con le info gia prese dalle apt e le info che dovrò inserire manualmente
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/RenterAnnounceUI.fxml"));
             Parent root = loader.load();
             RenterAnnounceUIController controller = loader.getController();
-            controller.createStage(myApartment);
+            controller.createStage(myApartment,myUserBean);
             Scene scene = new Scene(root);
 
             Stage primaryStage = new Stage();
 
-            primaryStage.setTitle("Select Apartment");
+            primaryStage.setTitle("Renter Announce");
             primaryStage.setScene(scene);
 
             primaryStage.show();

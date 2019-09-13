@@ -17,13 +17,12 @@ public class Apartment {
     private float area;
     //private Dictionary<String,String> services;
 
-    public Apartment(int myIdApt, String myName, String myAddress, String myIdOwner, List<String> myPictures, String myDescription, float myEvaluation, float myTaxes, int myCapacity, float myArea){
+    public Apartment(int myIdApt, String myName, String myAddress, String myIdOwner, String myDescription, float myEvaluation, float myTaxes, int myCapacity, float myArea){
 
         this.idApt=myIdApt;
         this.name=myName;
         this.address=myAddress;
         this.idOwner=myIdOwner;
-        this.pictures=myPictures;
         this.description=myDescription;
         this.evaluation=myEvaluation;
         this.taxes=myTaxes;

@@ -1,14 +1,11 @@
 package dao;
 
 import bean.ApartmentBean;
-import bean.UserBean;
 import entity.RenterAnnounce;
 import entity.TenantAnnounce;
-import entity.User;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 import static dao.DBQuery.*;
 
@@ -31,10 +28,12 @@ public class DBFunctions {
             statement.setString(2,password);
             ResultSet rs = statement.executeQuery();
 
+
             if (rs.first() == false) {
                 //risultato vuoto
                 return 0;
             }
+
 
             idLoaded = rs.getString("id");
             pwdLoaded = rs.getString("password");
@@ -89,7 +88,7 @@ public class DBFunctions {
         try {
 
 
-            PreparedStatement ps = dbConn.openConnection().prepareStatement(insertAnnounce);
+            PreparedStatement ps = dbConn.openConnection().prepareStatement(insertTenantAnnounce);
             ps.setString(1,announce.getTitle());
             ps.setString(2, announce.getName());
             ps.setString(3, announce.getCity());
@@ -101,7 +100,7 @@ public class DBFunctions {
             ps.setString(9, announce.getWifi());
             ps.setString(10,announce.getGarden());
             ps.setString(11,announce.getAnimals());
-            ps.setString(12,announce.getAirConditionig());
+            ps.setString(12,announce.getAirConditioning());
             ps.setString(13,announce.getParking());
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -114,8 +113,35 @@ public class DBFunctions {
         return true;
     }
 
-    public void insertNewRenterAnnounce(RenterAnnounce announce){
+    public boolean insertNewRenterAnnounce(RenterAnnounce announce){
+        try {
 
+
+            PreparedStatement ps = dbConn.openConnection().prepareStatement(insertRenterAnnounce);
+            ps.setString(1, null);
+            ps.setInt(2, announce.getIdApt());
+            ps.setString(3, announce.getAddress());
+            ps.setString(4, null);
+            ps.setString(5,announce.getDescription());
+            ps.setInt(6,announce.getCapacity());
+            ps.setFloat(7,announce.getArea());
+            ps.setFloat(8, announce.getPrice());
+            ps.setDate(9 ,Date.valueOf(announce.getFrom()));
+            ps.setDate(10, Date.valueOf(announce.getTo()));
+            ps.setString(11,announce.getTitle());
+            ps.setString(12,announce.getWifi());
+            ps.setString(13,announce.getAnimals());
+            ps.setString(14,announce.getParking());
+            ps.setString(15,announce.getAirConditioning());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("DB exception");
+            e.printStackTrace();
+            return false;
+        } finally {
+            dbConn.closeConnection();
+        }
+        return true;
 
 
 
@@ -172,10 +198,35 @@ public class DBFunctions {
 
     }
 
+/*
+    public String searchNickname(String id) {
+
+        try {
+            System.out.println("DBFunction: id=" + id);
+
+            PreparedStatement statement = dbConn.openConnection().prepareStatement(searchNicknameByUser);
+            statement.setString(1,id);
+            ResultSet rs = statement.executeQuery();
 
 
+            if (rs.first() == false) {
+                //ERRORE- da gestire
+                return null;
+            }
 
-    public void searchApartmentById(int idApt) {
-        //scrivi
+            String res = rs.getString("nickname");
+            System.out.println("DBFunction: res=" + res);
+            return res;
+
+
+        } catch (SQLException e) {
+            System.out.println("Database exception");
+            e.printStackTrace();
+        } finally {
+            dbConn.closeConnection();
+        }
+
+        return null;      //qui non deve arrivarci
     }
+    */
 }

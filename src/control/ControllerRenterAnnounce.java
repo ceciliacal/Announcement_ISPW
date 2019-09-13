@@ -25,15 +25,37 @@ public class ControllerRenterAnnounce {
         return instance;
     }
 
-    public void validateAnnounce(RenterAnnounceBean bean){
+    public void validateAnnounce(RenterAnnounceBean bean, Apartment apartment ){
         //verifica che non esiste un altro annuncio per quell'appartamento
+        String idOwner;
 
         RenterAnnounce announce;
 
         DBFunctions dbf= new DBFunctions();
-        //announce=new RenterAnnounce(0,0,bean.getTitle(),bean.getPrice(),bean.getFromDate(),bean.getToDate(),bean.getWifi(),bean.getAnimals(),bean.getParking(),bean.getAirConditioning());
+        //idOwner=dbf.searchNickname(apartment.getIdOwner());  //prendo nickname proprietario, lo metto nell'annuncio ma lo vedo sulla label solo una volta che l'annuncio è stato pubblicato
+        //bean.setIdOwner(idOwner);
+        System.out.println("validate- ind: "+apartment.getAddress());
+        //announce=new RenterAnnounce(apartment.getIdApt(),apartment.getAddress(),apartment.getDescription(),apartment.getCapacity(),apartment.getArea(),bean.getPrice(),bean.getFromDate(),bean.getToDate(),bean.getTitle(),bean.getWifi(),bean.getAnimals(),bean.getParking(),bean.getAirConditioning(),bean.getIdOwner());
+        announce=new RenterAnnounce(apartment.getIdApt(),apartment.getAddress(),apartment.getDescription(),apartment.getCapacity(),apartment.getArea(),bean.getPrice(),bean.getFromDate(),bean.getToDate(),bean.getTitle(),bean.getWifi(),bean.getAnimals(),bean.getParking(),bean.getAirConditioning());
 
-        //dbf.insertNewRenterAnnounce(announce);
+
+        System.out.println(announce.getIdApt());
+        System.out.println(announce.getAddress());
+        System.out.println(announce.getDescription());
+        System.out.println(announce.getCapacity());
+        System.out.println(announce.getArea());
+        System.out.println(announce.getPrice());
+        System.out.println(announce.getFrom());
+        System.out.println(announce.getTo());
+        System.out.println(announce.getTitle());
+        System.out.println(announce.getWifi());
+        System.out.println(announce.getAnimals());
+        System.out.println(announce.getParking());
+        System.out.println(announce.getAirConditioning());
+
+
+
+        dbf.insertNewRenterAnnounce(announce);
 
     }
 
@@ -57,18 +79,9 @@ public class ControllerRenterAnnounce {
     }
 
 
-    //restituisce l'id i-esimo (da lista idApartments) dell'appartamento i-esimo (da lista nameApartments)
-    public String aptIdByIndex(int i) {
-        return idApartments.get(i);
-    }
-
-    public void cercoAppartamento(ApartmentBean aptBean) {
-        DBFunctions dbf= new DBFunctions();
-        dbf.searchApartmentById(aptBean.getIdApt());
-    }
-
     public Apartment createApartment(ApartmentBean aptBean) {
-        Apartment myApartment= new Apartment(aptBean.getIdApt(),aptBean.getName(),aptBean.getAddress(),aptBean.getIdOwner(),aptBean.getPictures(),aptBean.getDescription(),aptBean.getEvaluation(),aptBean.getTaxes(),aptBean.getCapacity(),aptBean.getArea());
+        Apartment myApartment= new Apartment(aptBean.getIdApt(),aptBean.getName(),aptBean.getAddress(),aptBean.getIdOwner(),aptBean.getDescription(),aptBean.getEvaluation(),aptBean.getTaxes(),aptBean.getCapacity(),aptBean.getArea());
+        System.out.println("indirizzo: "+myApartment.getAddress());
         return myApartment;
     }
 }
