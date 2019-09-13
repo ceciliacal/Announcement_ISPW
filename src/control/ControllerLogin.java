@@ -59,7 +59,7 @@ public class ControllerLogin {
 
 
     public void checkUserType(UserBean bean, Stage stage) {
-
+        String bho;
         String userType;
         //String nickname;
 
