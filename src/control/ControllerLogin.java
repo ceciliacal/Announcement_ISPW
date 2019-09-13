@@ -3,7 +3,6 @@ package control;
 import bean.UserBean;
 import boundary.Main;
 import boundary.MenuController;
-import boundary.TemplateController;
 import dao.DBFunctions;
 import entity.User;
 import javafx.fxml.FXMLLoader;

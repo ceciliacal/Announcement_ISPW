@@ -1,12 +1,15 @@
 package control;
 
 import bean.TenantAnnounceBean;
-import boundary.TemplateController;
+import boundary.PostedTenantAnnounceController;
 import dao.DBFunctions;
 import entity.TenantAnnounce;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -40,9 +43,10 @@ public class ControllerTenantAnnounce {
 
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Template.fxml"));
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/PostedTenantAnnounce.fxml"));
             Parent root = loader.load();
-            TemplateController controller = loader.getController();
+            PostedTenantAnnounceController controller = loader.getController();
             controller.createStage(bean);
             Scene scene = new Scene(root);
 
@@ -52,6 +56,9 @@ public class ControllerTenantAnnounce {
             primaryStage.setScene(scene);
 
             primaryStage.show();
+
+
+
 
 
         } catch (IOException e) {

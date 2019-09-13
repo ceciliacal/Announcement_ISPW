@@ -2,7 +2,12 @@ package boundary;
 
 import bean.TenantAnnounceBean;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -10,8 +15,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 
-public class TemplateController {
-Image img;
+public class PostedTenantAnnounceController {
+
 
     @FXML
     public Label titleField, nameField, cityField, room, parking, airConditioning, animalsAllowed, garden, wifi, idDateDep, idDateArr, people, bathrooms;
@@ -25,7 +30,13 @@ Image img;
         room.setText(String.valueOf(bean.getRoom()));
         bathrooms.setText(String.valueOf(bean.getBath()));
         people.setText(String.valueOf(bean.getPeople()));
-
+        idDateArr.setText(String.valueOf(bean.getDateArr()));
+        idDateDep.setText(String.valueOf(bean.getDateDep()));
+        wifi.setText(bean.getWifi());
+        garden.setText(bean.getGarden());
+        animalsAllowed.setText(bean.getAnimals());
+        airConditioning.setText(bean.getAirConditionig());
+        parking.setText(bean.getParking());
         
         System.out.println("createStage il bean del title è" + bean.getTitle());
 
