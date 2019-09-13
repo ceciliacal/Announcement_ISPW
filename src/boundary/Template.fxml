@@ -2,22 +2,40 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="568.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.TemplateController">
+<AnchorPane prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.TemplateController">
    <children>
-      <Label fx:id="titleField" layoutX="343.0" layoutY="34.0" prefHeight="29.0" prefWidth="200.0" text="TITLE" textAlignment="CENTER" />
-      <Label fx:id="nameField" layoutX="64.0" layoutY="112.0" text="NAME" />
-      <Label fx:id="cityField" layoutX="353.0" layoutY="112.0" text="CITY" />
-      <Label fx:id="room" layoutX="67.0" layoutY="202.0" text="ROOM" />
-      <Label fx:id="parking" layoutX="416.0" layoutY="424.0" text="PARKING" />
-      <Label fx:id="airConditioning" layoutX="218.0" layoutY="433.0" text="AIR CONDITIONING" />
-      <Label fx:id="animalsAllowed" layoutX="206.0" layoutY="385.0" text="ANIMALS" />
-      <Label fx:id="garden" layoutX="65.0" layoutY="433.0" text="GARDEN" />
-      <Label fx:id="wifi" layoutX="67.0" layoutY="385.0" text="WIFI" />
-      <Label fx:id="idDateDep" layoutX="291.0" layoutY="256.0" text="DATA DEP" />
-      <Label fx:id="idDateArr" layoutX="291.0" layoutY="212.0" text="DATA ARR" />
-      <Label fx:id="people" layoutX="64.0" layoutY="284.0" text="PEOPLE" />
-      <Label fx:id="bathrooms" layoutX="66.0" layoutY="256.0" text="BATH" />
+      <Label fx:id="titleField" layoutX="106.0" layoutY="33.0" prefHeight="30.0" prefWidth="281.0" style="-fx-border-color: grey; -fx-border-radius: 10;" text="TITLE" textAlignment="CENTER" />
+      <Label fx:id="nameField" layoutX="106.0" layoutY="92.0" prefHeight="19.0" prefWidth="177.0" style="-fx-border-color: grey; -fx-border-radius: 10;" text="NAME" />
+      <Label fx:id="cityField" layoutX="491.0" layoutY="97.0" prefHeight="19.0" prefWidth="178.0" style="-fx-border-color: grey; -fx-border-radius: 10;" text="CITY" />
+      <Label fx:id="room" alignment="CENTER" layoutX="136.0" layoutY="168.0" prefHeight="30.0" prefWidth="41.0" style="-fx-border-color: grey; -fx-border-radius: 10;" text="ROOM" />
+      <Label fx:id="animalsAllowed" layoutX="284.0" layoutY="372.0" prefHeight="19.0" prefWidth="30.0" style="-fx-border-color: grey; -fx-border-radius: 5;" />
+      <Label fx:id="garden" layoutX="75.0" layoutY="400.0" prefHeight="19.0" prefWidth="30.0" style="-fx-border-color: grey; -fx-border-radius: 5;" />
+      <Label fx:id="wifi" layoutX="74.0" layoutY="372.0" prefHeight="19.0" prefWidth="30.0" style="-fx-border-color: grey; -fx-border-radius: 5;" />
+      <Label fx:id="idDateDep" alignment="CENTER" layoutX="527.0" layoutY="253.0" prefHeight="18.0" prefWidth="106.0" style="-fx-border-color: grey; -fx-border-radius: 10;" text="DATA DEP" />
+      <Label fx:id="idDateArr" alignment="CENTER" layoutX="527.0" layoutY="204.0" prefHeight="18.0" prefWidth="106.0" style="-fx-border-color: grey; -fx-border-radius: 10;" text="DATA ARR" />
+      <Label fx:id="people" layoutX="136.0" layoutY="257.0" prefHeight="30.0" prefWidth="41.0" style="-fx-border-color: grey; -fx-border-radius: 10;" text="PEOPLE" />
+      <Label fx:id="bathrooms" alignment="CENTER" layoutX="136.0" layoutY="216.0" prefHeight="30.0" prefWidth="41.0" style="-fx-border-color: grey; -fx-border-radius: 10;" text="BATH" />
+      <Label layoutX="30.0" layoutY="39.0" text="Titolo" underline="true" />
+      <Label layoutX="27.0" layoutY="94.0" text="Nickname" underline="true" />
+      <Label layoutX="427.0" layoutY="98.0" text="Città" underline="true" />
+      <Label layoutX="27.0" layoutY="179.0" text="Numero stanze" underline="true" />
+      <Label layoutX="29.0" layoutY="223.0" text="Numero bagni" underline="true" />
+      <Label layoutX="20.0" layoutY="263.0" text="Numero persone" underline="true" />
+      <Label layoutX="428.0" layoutY="254.0" text="Partenza" underline="true" />
+      <Label layoutX="436.0" layoutY="202.0" text="Arrivo" underline="true" />
+      <Label layoutX="29.0" layoutY="336.0" text="Ulteriori servizi">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="373.0" text="Wifi" />
+      <Label layoutX="23.0" layoutY="402.0" text="Giardino" />
+      <Label fx:id="airConditioning" layoutX="284.0" layoutY="399.0" prefHeight="19.0" prefWidth="30.0" style="-fx-border-color: grey; -fx-border-radius: 5;" />
+      <Label fx:id="parking" layoutX="476.0" layoutY="381.0" prefHeight="19.0" prefWidth="30.0" style="-fx-border-color: grey; -fx-border-radius: 5;" />
+      <Label layoutX="219.0" layoutY="373.0" text="Animali" />
+      <Label layoutX="182.0" layoutY="401.0" text="Aria condizionata" />
+      <Label layoutX="398.0" layoutY="382.0" text="Parcheggio" />
    </children>
 </AnchorPane>

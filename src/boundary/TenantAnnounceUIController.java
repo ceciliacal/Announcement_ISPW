@@ -11,6 +11,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
+
 public class TenantAnnounceUIController {
 
     @FXML
@@ -93,15 +95,26 @@ public class TenantAnnounceUIController {
 
     public int checkDate() {
 
-        int yearArr = idDateArr.getValue().getYear();
-        int yearDep =  idDateDep.getValue().getYear();
 
-        int monthArr = idDateArr.getValue().getMonthValue();
-        int monthDep=idDateDep.getValue().getMonthValue();
 
-        int dayArr = idDateArr.getValue().getDayOfMonth();
-        int dayDep =  idDateDep.getValue().getDayOfMonth();
+        System.out.println("oggi è: " + LocalDate.now());
 
+        if (idDateArr.getValue().isBefore(LocalDate.now())) {
+            System.out.println("data arr no");
+            return 0;
+        }
+
+        if (idDateDep.getValue().isBefore(idDateArr.getValue()) || idDateDep.getValue().isEqual(idDateArr.getValue())) {
+            System.out.println("data dep no");
+            return 0;
+        } else {
+            System.out.println("data ok");
+            return 2;
+
+        }
+    }
+
+        /*
         if (yearDep < yearArr) {
             System.out.println("anno no");
             return 0;
@@ -121,12 +134,18 @@ public class TenantAnnounceUIController {
         System.out.println("data ok");
         return 1;
 
-    }
+    } */
 
 
     public void clickedOkButton(ActionEvent actionEvent) {
         if (checkDate() == 0) {
+            notify.notification(0, "DATA ERRATA", "Inserisci una data successiva a quella attuale!");
+        }
+        if (checkDate() == 1) {
             notify.notification(0, "DATA ERRATA", "Inserisci una data successiva a quella di arrivo!");
+        }
+        else if (checkDate() == 2) {
+            notify.notification(1, "DATA INSERITA OK", "La data è stata inserita correttamente ");
         }
     }
 

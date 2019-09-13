@@ -33,7 +33,7 @@ public class ControllerTenantAnnounce {
         DBFunctions dbf = new DBFunctions();
 
 
-        TenantAnnounceBean tab = new TenantAnnounceBean();
+        //TenantAnnounceBean tab = new TenantAnnounceBean();
 
         prova = bean.getTitle();
         System.out.println("prova è " + prova);
