@@ -1,10 +1,13 @@
 package dao;
 
 import bean.ApartmentBean;
+import bean.RenterAnnounceBean;
+import bean.TenantAnnounceBean;
 import entity.RenterAnnounce;
 import entity.TenantAnnounce;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static dao.DBQuery.*;
@@ -199,6 +202,100 @@ public class DBFunctions {
 
     }
 
+
+
+    //bisogna fare due funzioni diverse per le liste perchè ci ritornano due tipi di dato diversi
+
+    /*public ArrayList<RenterAnnounceBean> searchRenterAnnounces() {
+
+        ArrayList<RenterAnnounceBean>  renterList = new ArrayList<>();
+
+
+
+
+
+    }
+
+    public ArrayList<TenantAnnounceBean> searchTenantAnnounces() {
+    }*/
+
+    public void searchAnnounces(ArrayList<RenterAnnounceBean> renterList, ArrayList<TenantAnnounceBean> tenantList) {
+
+        try{
+            //faccio query che ritorna tuta la lista di annunci renter e la mette in renterList
+            PreparedStatement statement = dbConn.openConnection().prepareStatement(getRenterAnnounces);
+            ResultSet rs = statement.executeQuery();
+
+
+            while(rs.next()) {
+                RenterAnnounceBean rab = new RenterAnnounceBean();
+
+                rab.setIdAnn(Integer.parseInt(rs.getString("idAnn")));
+                rab.setAddress(rs.getString("address"));
+                rab.setDescription(rs.getString("description"));
+                rab.setCapacity(Integer.parseInt(rs.getString("capacity")));
+                rab.setArea(Float.parseFloat(rs.getString("area")));
+                rab.setPrice(Float.parseFloat(rs.getString("price")));
+                rab.setFromDate(LocalDate.parse(rs.getString("from")));
+                rab.setToDate(LocalDate.parse(rs.getString("to")));
+                rab.setTitle(rs.getString("title"));
+                rab.setWifi(rs.getString("wifi"));
+                rab.setAnimals(rs.getString("animals"));
+                rab.setParking(rs.getString("parking"));
+                rab.setAirConditioning(rs.getString("airConditioning"));
+
+                renterList.add(rab);
+            }
+
+            PreparedStatement statement2 = dbConn.openConnection().prepareStatement(getTenantAnnounces);
+            ResultSet rs2 = statement2.executeQuery();
+
+            while(rs2.next()) {
+                TenantAnnounceBean tab = new TenantAnnounceBean();
+
+                tab.setTitle(rs2.getString("title"));
+                tab.setName(rs2.getString("name"));
+                tab.setCity(rs2.getString("city"));
+                tab.setRoom(Integer.parseInt(rs2.getString("room")));
+                tab.setPeople(Integer.parseInt(rs2.getString("capacity")));
+                tab.setBath(Integer.parseInt(rs2.getString("bathroom")));
+                tab.setDateArr(LocalDate.parse(rs2.getString("arrival")));
+                tab.setDateDep(LocalDate.parse(rs2.getString("departure")));
+                tab.setWifi(rs2.getString("wifi"));
+                tab.setGarden(rs2.getString("garden"));
+                tab.setAnimals(rs2.getString("pets"));
+                tab.setAirConditionig(rs2.getString("airConditioning"));
+                tab.setParking(rs2.getString("parking"));
+
+                tenantList.add(tab);
+
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println("Database exception");
+            e.printStackTrace();
+        } finally {
+            dbConn.closeConnection();
+        }
+
+     }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
     public String searchNickname(String id) {
 
@@ -230,4 +327,4 @@ public class DBFunctions {
         return null;      //qui non deve arrivarci
     }
     */
-}
+

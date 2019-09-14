@@ -1,6 +1,9 @@
 package boundary;
 
+import bean.RenterAnnounceBean;
+import bean.TenantAnnounceBean;
 import bean.UserBean;
+import control.ControllerShowDashboard;
 import entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MenuController {
     public Button createNewAnnounce;
@@ -85,4 +89,34 @@ public class MenuController {
     }
 
 
+    public void clickedShowDashboard(ActionEvent actionEvent) {
+
+        ArrayList<RenterAnnounceBean> renterList = new ArrayList<>();
+        ArrayList<TenantAnnounceBean> tenantList = new ArrayList<>();
+
+
+        ControllerShowDashboard csd= ControllerShowDashboard.getInstance();
+        csd.createListAnnounce(renterList,tenantList);
+        try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/ShowDashboardUI.fxml"));
+                Parent root = loader.load();
+                ShowDashboardUIController controller = loader.getController();
+                controller.createListViewAnnounces(renterList,tenantList);
+                Scene scene = new Scene(root);
+
+                Stage primaryStage = new Stage();
+
+                primaryStage.setTitle("Announces Dashboard");
+                primaryStage.setScene(scene);
+
+                primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        //dopo aver cliccato viasualizza bacheca dobbiamo chiamare una funzione del controller show bacheca (UC) invece di creare direttamente un nuovo stage (scena)
+
+
+    }
 }
