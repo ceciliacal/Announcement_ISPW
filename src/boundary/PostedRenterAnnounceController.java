@@ -6,10 +6,10 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 
-public class PostedRenterAnnounce {
+public class PostedRenterAnnounceController {
 
     @FXML
-    public Label address, description, ownerName, capacity, area, from, to, wifi, pets, parking, air, price;
+    public Label address, description, ownerName, capacity, area, from, to, wifi, pets, parking, air, title, price;
 
     public void showRenterAnnounce(RenterAnnounceBean bean) throws IOException  {
 
@@ -39,6 +39,8 @@ public class PostedRenterAnnounce {
         pets.setText(bean.getAnimals());
         air.setText(bean.getAirConditioning());
         price.setText(String.valueOf(bean.getPrice()));
+        title.setText(bean.getTitle());
+        parking.setText(bean.getParking());
 
 
     }

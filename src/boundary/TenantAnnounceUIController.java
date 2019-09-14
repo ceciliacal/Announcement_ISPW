@@ -156,7 +156,7 @@ public class TenantAnnounceUIController {
 
 
     /*****
-    public void createStage(TenantAnnounceBean bean) {
+    public void showTenantAnnounce(TenantAnnounceBean bean) {
 
         titleField.setText(bean.getTitle());
         nameField.setText(bean.getName());
@@ -166,7 +166,7 @@ public class TenantAnnounceUIController {
         people.setText(String.valueOf(bean.getPeople()));
 
 
-        System.out.println("createStage il bean del title è" + bean.getTitle());
+        System.out.println("showTenantAnnounce il bean del title è" + bean.getTitle());
 
 
     }

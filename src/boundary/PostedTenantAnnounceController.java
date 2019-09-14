@@ -22,7 +22,7 @@ public class PostedTenantAnnounceController {
     public Label titleField, nameField, cityField, room, parking, airConditioning, animalsAllowed, garden, wifi, idDateDep, idDateArr, people, bathrooms;
 
 
-    public void createStage(TenantAnnounceBean bean) throws IOException {
+    public void showTenantAnnounce(TenantAnnounceBean bean) throws IOException {
 
         titleField.setText(bean.getTitle());
         nameField.setText(bean.getName());
@@ -38,7 +38,7 @@ public class PostedTenantAnnounceController {
         airConditioning.setText(bean.getAirConditionig());
         parking.setText(bean.getParking());
         
-        System.out.println("createStage il bean del title è" + bean.getTitle());
+        System.out.println("showTenantAnnounce il bean del title è" + bean.getTitle());
 
 
     }

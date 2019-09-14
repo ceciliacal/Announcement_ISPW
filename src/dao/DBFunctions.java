@@ -208,7 +208,7 @@ public class DBFunctions {
 
     /*public ArrayList<RenterAnnounceBean> searchRenterAnnounces() {
 
-        ArrayList<RenterAnnounceBean>  renterList = new ArrayList<>();
+        ArrayList<RenterAnnounceBean>  rList = new ArrayList<>();
 
 
 
@@ -222,7 +222,7 @@ public class DBFunctions {
     public void searchAnnounces(ArrayList<RenterAnnounceBean> renterList, ArrayList<TenantAnnounceBean> tenantList) {
 
         try{
-            //faccio query che ritorna tuta la lista di annunci renter e la mette in renterList
+            //faccio query che ritorna tuta la lista di annunci renter e la mette in rList
             PreparedStatement statement = dbConn.openConnection().prepareStatement(getRenterAnnounces);
             ResultSet rs = statement.executeQuery();
 

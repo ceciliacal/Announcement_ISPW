@@ -4,16 +4,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="598.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.PostedRenterAnnounce">
+<AnchorPane prefHeight="598.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.PostedRenterAnnounceController">
     <children>
-            <Label fx:id="address" layoutX="385.0" layoutY="226.0" prefHeight="17.0" prefWidth="99.0" text="Address" />
-            <Label layoutX="333.0" layoutY="226.0" text="Indirizzo:" underline="true" />
+            <Label fx:id="address" layoutX="352.0" layoutY="238.0" prefHeight="17.0" prefWidth="179.0" text="Address" />
+            <Label layoutX="300.0" layoutY="238.0" text="Indirizzo:" underline="true" />
       <Label alignment="CENTER" layoutX="140.0" layoutY="125.0" prefHeight="72.0" prefWidth="489.0" text="ANNUNCIO AFFITTASI">
          <font>
             <Font size="47.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="295.0" layoutY="186.0" prefHeight="17.0" prefWidth="179.0" style="-fx-border-radius: 4; -fx-border-color: grey;" text="TITLE">
+      <Label fx:id="title" alignment="CENTER" layoutX="295.0" layoutY="186.0" prefHeight="17.0" prefWidth="179.0" style="-fx-border-radius: 4; -fx-border-color: grey;" text="TITLE">
          <font>
             <Font size="28.0" />
          </font>

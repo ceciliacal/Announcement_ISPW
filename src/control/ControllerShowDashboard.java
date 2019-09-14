@@ -28,8 +28,8 @@ public class ControllerShowDashboard {
 
         //creiamo le due liste che poi andiamo a mettere nelle listView di showDashboard...
         DBFunctions dbf= new DBFunctions();
-       // renterList = dbf.searchRenterAnnounces();
-       // tenantList = dbf.searchTenantAnnounces();
+       // rList = dbf.searchRenterAnnounces();
+       // tList = dbf.searchTenantAnnounces();
         dbf.searchAnnounces(renterList,tenantList);
 
         for(int i=0;i<renterList.size();i++){

@@ -3,7 +3,7 @@ package control;
 import bean.ApartmentBean;
 import bean.RenterAnnounceBean;
 import bean.UserBean;
-import boundary.PostedRenterAnnounce;
+import boundary.PostedRenterAnnounceController;
 import entity.Apartment;
 import entity.RenterAnnounce;
 import dao.DBFunctions;
@@ -84,12 +84,12 @@ public class ControllerRenterAnnounce {
         */
 
         //dbf.insertNewRenterAnnounce(announce);
-        //ora mostra annuncio finale -> chiama boundary PostedRenterAnnounce;
+        //ora mostra annuncio finale -> chiama boundary PostedRenterAnnounceController;
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/PostedRenterAnnounce.fxml"));
             Parent root = loader.load();
-            PostedRenterAnnounce controller = loader.getController();
+            PostedRenterAnnounceController controller = loader.getController();
             controller.showRenterAnnounce(bean);
             Scene scene = new Scene(root);
 
