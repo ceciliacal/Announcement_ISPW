@@ -39,7 +39,7 @@ public class ShowDashboardUIController {
         //se non selezioni niente da una lista allora avrai selezionato dall'altra (controllo gli indici oppure i nomi selezionati, se uno è null allora l'avrò preso dall'altra lista
 
 
-
+//ok
 
 
 
