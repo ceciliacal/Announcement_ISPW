@@ -45,7 +45,6 @@
          </font>
       </TextField>
       <Button fx:id="okBtn" layoutX="526.0" layoutY="147.0" mnemonicParsing="false" onAction="#clickedOkButton" text="ok" />
-      <Button fx:id="deleteBtn" layoutX="515.0" layoutY="21.0" mnemonicParsing="false" text="Rimuovi" />
       <Button fx:id="publishBtn" layoutX="612.0" layoutY="21.0" mnemonicParsing="false" onAction="#clickedPublishBtn" text="Pubblica" />
    </children>
 </AnchorPane>

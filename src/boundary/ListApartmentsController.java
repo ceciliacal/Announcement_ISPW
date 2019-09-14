@@ -33,7 +33,7 @@ public class ListApartmentsController {
 
     public void clickedOkBtn(ActionEvent actionEvent) {         //prepara dati dell'annuncio selezionato nella listView
 
-
+        Stage stage = (Stage)okBtn.getScene().getWindow();
         int aptIndex= listView.getSelectionModel().getSelectedIndex();  //prendo indice dell'apt selezionato su listView
 
         aptBean=apartmentsList.get(aptIndex);
@@ -55,12 +55,10 @@ public class ListApartmentsController {
             controller.createStage(myApartment,myUserBean);
             Scene scene = new Scene(root);
 
-            Stage primaryStage = new Stage();
+            stage.setTitle("Renter Announce");
+            stage.setScene(scene);
 
-            primaryStage.setTitle("Renter Announce");
-            primaryStage.setScene(scene);
-
-            primaryStage.show();
+            stage.show();
 
 
         } catch (IOException e) {

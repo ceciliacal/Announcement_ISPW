@@ -31,7 +31,7 @@ public class ControllerRenterAnnounce {
         return instance;
     }
 
-    public void validateAnnounce(RenterAnnounceBean bean, Apartment apartment ){
+    public void validateAnnounce(RenterAnnounceBean bean, Apartment apartment, Stage stage ){
         //verifica che non esiste un altro annuncio per quell'appartamento
         String idOwner;
 
@@ -93,11 +93,11 @@ public class ControllerRenterAnnounce {
             controller.showRenterAnnounce(bean);
             Scene scene = new Scene(root);
 
-            Stage primaryStage = new Stage();
-            primaryStage.setTitle("Annuncio Affittasi");
-            primaryStage.setScene(scene);
+            //Stage primaryStage = new Stage();
+            stage.setTitle("Annuncio Affittasi");
+            stage.setScene(scene);
 
-            primaryStage.show();
+            stage.show();
 
 
         } catch (IOException e) {

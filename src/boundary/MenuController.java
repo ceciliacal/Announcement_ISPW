@@ -22,9 +22,15 @@ public class MenuController {
 
     private UserBean myBean = new UserBean();
 
+    public Scene getMenuScene(){
+
+        Scene scene=(Scene)title.getScene();
+        return scene;
+    }
+
     public void clickedNewAnnounceBtn(ActionEvent actionEvent) {
-        Stage stage = (Stage)title.getScene().getWindow();
-        stage.close();
+        Scene menuScene=getMenuScene();
+        Stage stage = (Stage)menuScene.getWindow();  //stiamo assegnando lo stage di partenza alla variabile stage
 
         String tipo = myBean.getUserType(); //invece di bean passo user entity
         String userId = myBean.getId();
@@ -36,14 +42,19 @@ public class MenuController {
                 ListApartmentsController controller = loader.getController();
                 controller.createListView(myBean);
                 Scene scene = new Scene(root);
-
+                /*
                 Stage primaryStage = new Stage();
 
                 primaryStage.setTitle("List Apartments");
                 primaryStage.setScene(scene);
 
                 primaryStage.show();
+                */
 
+                stage.setTitle("List Apartments");
+                stage.setScene(scene);
+
+                stage.show();
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -58,12 +69,19 @@ public class MenuController {
                 controller.createStage(myBean);
                 Scene scene = new Scene(root);
 
+                /*
                 Stage primaryStage = new Stage();
 
                 primaryStage.setTitle("Tenant Announce");
                 primaryStage.setScene(scene);
 
                 primaryStage.show();
+                */
+
+                stage.setTitle("Tenant Announce");
+                stage.setScene(scene);
+
+                stage.show();
 
 
             } catch (IOException e) {
@@ -77,6 +95,8 @@ public class MenuController {
 
     public void createStage(User bean) {        //QUA VA USATA ENTITY "USER" E NON BEAN!!
         String userType = bean.getUserType();
+        System.out.println("dentro createStage");
+
 
         if (userType.equals("1")) {
             title.setText("MENU LOCATORE");
@@ -86,6 +106,8 @@ public class MenuController {
         }
         myBean.setUserType(userType);
         myBean.setId(bean.getId());
+
+
     }
 
 

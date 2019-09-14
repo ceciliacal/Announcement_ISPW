@@ -24,7 +24,7 @@ public class ControllerTenantAnnounce {
         return instance;
     }
 
-
+//
 
     public void createTenantAnnounce(TenantAnnounceBean bean) {
         String prova ;

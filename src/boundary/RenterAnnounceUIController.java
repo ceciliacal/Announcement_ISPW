@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -49,6 +50,8 @@ public class RenterAnnounceUIController implements Initializable {
 
 
     public void publishButtonClicked(ActionEvent actionEvent) {
+        Stage stage = (Stage)title.getScene().getWindow();
+
         bean.setTitle(title.getText());
         bean.setPrice(Float.parseFloat(price.getText()));
         bean.setFromDate(fromDate.getValue());
@@ -86,10 +89,10 @@ public class RenterAnnounceUIController implements Initializable {
 
         ControllerRenterAnnounce cra= ControllerRenterAnnounce.getInstance();
         System.out.println("sto in Controller");
-        cra.validateAnnounce(bean,myApt);
+        cra.validateAnnounce(bean,myApt,stage);
     }
 
-    //stage su cui inserisco i dati e ci sono già i dati dell'appartamento presi dal DB
+    //scena su cui inserisco i dati e ci sono già i dati dell'appartamento presi dal DB
     //dati che già ho nel momento in cui vado a cliccare "pubblica"
 
     public void createStage(Apartment myApartment, UserBean myUserBean) {       //qua ci dovrebbe andare USER

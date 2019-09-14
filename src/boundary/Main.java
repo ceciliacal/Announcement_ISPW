@@ -24,7 +24,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("LoginUI.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("RenterAnnounceUI.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("TenantAnnounce.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Login");
         primaryStage.setScene(new Scene(root, 500, 290));
         primaryStage.show();
 /*

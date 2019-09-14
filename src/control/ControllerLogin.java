@@ -87,21 +87,29 @@ public class ControllerLogin {
 
 
 
-        stage.close();
+        //stage.close();
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Menu.fxml"));
             Parent root = loader.load();
             MenuController controller = loader.getController();
+            System.out.println("prima di createStage");
             controller.createStage(myUser);
+            System.out.println("dopo di createStage");
             Scene scene = new Scene(root);
 
+            /*
             Stage primaryStage = new Stage();
             primaryStage.setTitle("Menu");
             primaryStage.setScene(scene);
 
             primaryStage.show();
+            */
 
+            stage.setTitle("Menu");
+            stage.setScene(scene);
+
+            stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();

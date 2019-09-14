@@ -1,8 +1,14 @@
 package boundary;
 
 import bean.RenterAnnounceBean;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -10,6 +16,7 @@ public class PostedRenterAnnounceController {
 
     @FXML
     public Label address, description, ownerName, capacity, area, from, to, wifi, pets, parking, air, title, price;
+    public Button backBtn;
 
     public void showRenterAnnounce(RenterAnnounceBean bean) throws IOException  {
 
@@ -43,5 +50,20 @@ public class PostedRenterAnnounceController {
         parking.setText(bean.getParking());
 
 
+    }
+
+    public void clickedBackButton(ActionEvent actionEvent) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Menu.fxml"));
+            Stage stage = (Stage)area.getScene().getWindow();
+            stage.setScene(new Scene(loader.load()));
+
+            stage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
