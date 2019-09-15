@@ -102,7 +102,7 @@ public class RenterAnnounceUIController implements Initializable {
         bean.setPictures(fxImages);
 
         //controllo che i campi non siano vuoti
-        
+
         //int checkPrice,checkDate;
 
         //devo rimanere sullo stage
