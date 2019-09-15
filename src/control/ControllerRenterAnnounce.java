@@ -10,6 +10,7 @@ import dao.DBFunctions;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,8 +32,7 @@ public class ControllerRenterAnnounce {
         return instance;
     }
 
-    public void validateAnnounce(RenterAnnounceBean bean, Apartment apartment, Stage stage ){
-        //verifica che non esiste un altro annuncio per quell'appartamento
+    public void validateAnnounce(RenterAnnounceBean bean, Apartment apartment, Stage stage){
         String idOwner;
 
         RenterAnnounce announce;
@@ -48,7 +48,7 @@ public class ControllerRenterAnnounce {
         bean.setArea(apartment.getArea());
 
         System.out.println("id è " + bean.getIdApt());
-        System.out.println("addresso "+ bean.getAddress());
+        System.out.println("address "+ bean.getAddress());
         System.out.println("descr" + bean.getDescription());
         System.out.println("capacity" + bean.getCapacity());
         System.out.println("area" + bean.getArea());
@@ -60,6 +60,7 @@ public class ControllerRenterAnnounce {
         System.out.println("animals" + bean.getAnimals());
         System.out.println("parking" + bean.getParking());
         System.out.println("air" + bean.getAirConditioning());
+        //System.out.println("idOwner" + bean.getIdOwner());
 
 
 
@@ -83,8 +84,6 @@ public class ControllerRenterAnnounce {
 
         */
 
-        //dbf.insertNewRenterAnnounce(announce);
-        //ora mostra annuncio finale -> chiama boundary PostedRenterAnnounceController;
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/PostedRenterAnnounce.fxml"));

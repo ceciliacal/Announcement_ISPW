@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ShowDashboardUIController {
 
@@ -45,6 +46,8 @@ public class ShowDashboardUIController {
         int tenantIndex = listViewTenant.getSelectionModel().getSelectedIndex();
 
         System.out.println("indice renter selezionato" + renterIndex);
+        System.out.println("indice tenant selezionato" + tenantIndex);
+
 
         //SELEZIONE ANNUNCIO AFFITTASI (RENTER)
 
@@ -57,7 +60,7 @@ public class ShowDashboardUIController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/PostedRenterAnnounce.fxml"));
                 Parent root = loader.load();
                 PostedRenterAnnounceController controller = loader.getController();
-                controller.showRenterAnnounce(rList.get(renterIndex));
+                controller.showRenterAnnounce(rList.get(renterIndex-1));
                 Scene scene = new Scene(root);
 
                 Stage primaryStage = new Stage();
@@ -82,7 +85,7 @@ public class ShowDashboardUIController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/PostedTenantAnnounce.fxml"));
                 Parent root = loader.load();
                 PostedTenantAnnounceController controller = loader.getController();
-                controller.showTenantAnnounce(tList.get(tenantIndex));
+                controller.showTenantAnnounce(tList.get(tenantIndex-1));
                 Scene scene = new Scene(root);
 
                 Stage primaryStage = new Stage();
@@ -137,7 +140,7 @@ public class ShowDashboardUIController {
         announcesTenantList.add("---Nessuno---");
 
         for (int i=0; i < tenantList.size(); i++) {
-            announcesTenantList.add(tenantList.get(i).getTitle());
+            announcesTenantList.add(tenantList.get(i).getName());
         }
 
 

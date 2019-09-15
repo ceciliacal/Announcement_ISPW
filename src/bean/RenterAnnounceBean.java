@@ -2,8 +2,9 @@ package bean;
 
 
 
+import javafx.scene.image.Image;
+
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.List;
 
 public class RenterAnnounceBean {
@@ -12,7 +13,7 @@ public class RenterAnnounceBean {
     private int idApt;    //id appartamento a cui si riferisce
     private String address;
     private String idOwner;
-    private List<String> pictures;
+    private List<Image> pictures;
     private String description;
     private float evaluation;
     private int capacity;
@@ -63,6 +64,8 @@ public class RenterAnnounceBean {
 
     public void setIdOwner(String myId){this.idOwner=myId;}
 
+    public void setPictures(List<Image> pictures) { this.pictures = pictures; }
+
     //get
     public int getIdApt(){return this.idApt;}
 
@@ -96,4 +99,6 @@ public class RenterAnnounceBean {
     public int getCapacity() {return this.capacity;}
 
     public float getArea() {return this.area;}
+
+    public List<Image> getPictures() { return this.pictures; }
 }

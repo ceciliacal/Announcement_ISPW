@@ -8,15 +8,33 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import thread.ListImages;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PostedRenterAnnounceController {
 
     @FXML
     public Label address, description, ownerName, capacity, area, from, to, wifi, pets, parking, air, title, price;
-    public Button backBtn;
+    //public Button backBtn;
+    public AnchorPane ap1;
+    public ImageView image1;
+    public AnchorPane ap2;
+    public ImageView image2;
+    public AnchorPane ap4;
+    public ImageView image4;
+    public AnchorPane ap3;
+    public ImageView image3;
+    public AnchorPane ap5;
+    public ImageView image5;
+
+    List<Image> fxImages = new ArrayList<>();
 
     public void showRenterAnnounce(RenterAnnounceBean bean) throws IOException  {
 
@@ -48,6 +66,37 @@ public class PostedRenterAnnounceController {
         price.setText(String.valueOf(bean.getPrice()));
         title.setText(bean.getTitle());
         parking.setText(bean.getParking());
+
+        ListImages myListImages=new ListImages();
+        fxImages=myListImages.loadImageList();
+
+        image1.setImage(fxImages.get(0));
+        image2.setImage(fxImages.get(1));
+        image3.setImage(fxImages.get(2));
+        image4.setImage(fxImages.get(3));
+        image5.setImage(fxImages.get(4));
+
+
+        image1.fitWidthProperty().bind(ap1.widthProperty());
+        image1.fitHeightProperty().bind(ap1.heightProperty());
+        image1.setPreserveRatio(false);
+
+        image2.fitWidthProperty().bind(ap2.widthProperty());
+        image2.fitHeightProperty().bind(ap2.heightProperty());
+        image2.setPreserveRatio(false);
+
+        image3.fitWidthProperty().bind(ap2.widthProperty());
+        image3.fitHeightProperty().bind(ap2.heightProperty());
+        image3.setPreserveRatio(false);
+
+        image4.fitWidthProperty().bind(ap2.widthProperty());
+        image4.fitHeightProperty().bind(ap2.heightProperty());
+        image4.setPreserveRatio(false);
+
+        image5.fitWidthProperty().bind(ap2.widthProperty());
+        image5.fitHeightProperty().bind(ap2.heightProperty());
+        image5.setPreserveRatio(false);
+
 
 
     }

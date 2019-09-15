@@ -226,9 +226,10 @@ public class DBFunctions {
             PreparedStatement statement = dbConn.openConnection().prepareStatement(getRenterAnnounces);
             ResultSet rs = statement.executeQuery();
 
-
             while(rs.next()) {
                 RenterAnnounceBean rab = new RenterAnnounceBean();
+
+
 
                 rab.setIdAnn(Integer.parseInt(rs.getString("idAnn")));
                 rab.setAddress(rs.getString("address"));
@@ -243,6 +244,7 @@ public class DBFunctions {
                 rab.setAnimals(rs.getString("animals"));
                 rab.setParking(rs.getString("parking"));
                 rab.setAirConditioning(rs.getString("airConditioning"));
+                System.out.println("DB: capacity= "+rab.getCapacity());
 
                 renterList.add(rab);
             }

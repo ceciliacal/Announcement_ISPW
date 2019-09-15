@@ -3,7 +3,6 @@ package boundary;
 import bean.ApartmentBean;
 import bean.UserBean;
 import control.ControllerRenterAnnounce;
-import dao.DBFunctions;
 import entity.Apartment;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

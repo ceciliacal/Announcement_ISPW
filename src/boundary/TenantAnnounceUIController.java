@@ -5,10 +5,7 @@ import bean.UserBean;
 import control.ControllerTenantAnnounce;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
@@ -16,7 +13,7 @@ import java.time.LocalDate;
 public class TenantAnnounceUIController {
 
     @FXML
-    public TextField titleField, nameField, cityField, room, bathrooms, people;
+    public TextField titleField, cityField, room, bathrooms, people;
 
     @FXML
     public CheckBox wifi, garden, animalsAllowed, airConditioning, parking;
@@ -26,6 +23,8 @@ public class TenantAnnounceUIController {
 
     @FXML
     public Button okBtn, deleteBtn, publishBtn;
+
+    public Label nameField;
 
     //private renterAnnounceBean bean;
 
@@ -82,7 +81,7 @@ public class TenantAnnounceUIController {
         }
 
 
-        //System.out.println("city e name sono " + bean.getCity() +   bean.getName());
+        //System.out.println("city e name sono " + bean.getCity() +   bean.getIdUser());
 
         //una volta inseriti i dati e cliccato su pubblica si chiude la finestra
         Stage stage = (Stage)titleField.getScene().getWindow();
@@ -152,23 +151,7 @@ public class TenantAnnounceUIController {
 
 
     public void createStage(UserBean myBean) {
+        //nameField.setText(id);
     }
 
-
-    /*****
-    public void showTenantAnnounce(TenantAnnounceBean bean) {
-
-        titleField.setText(bean.getTitle());
-        nameField.setText(bean.getName());
-        cityField.setText(bean.getCity());
-        room.setText(String.valueOf(bean.getRoom()));
-        bathrooms.setText(String.valueOf(bean.getBath()));
-        people.setText(String.valueOf(bean.getPeople()));
-
-
-        System.out.println("showTenantAnnounce il bean del title è" + bean.getTitle());
-
-
-    }
-     ******/
 }

@@ -29,7 +29,7 @@
                            <children>
                               <SplitPane dividerPositions="0.29797979797979796" prefHeight="261.0" prefWidth="818.0">
                                 <items>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                  <AnchorPane fx:id="ap1" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
                                           <ImageView id="image1" fx:id="image1" fitHeight="261.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true" />
                                        </children>
@@ -42,12 +42,12 @@
                                                    <children>
                                                       <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="259.0" prefWidth="284.0">
                                                         <items>
-                                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="282.0">
+                                                          <AnchorPane fx:id="ap2" minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="282.0">
                                                                <children>
                                                                   <ImageView id="image2" fx:id="image2" fitHeight="127.0" fitWidth="282.0" pickOnBounds="true" preserveRatio="true" />
                                                                </children>
                                                             </AnchorPane>
-                                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                                          <AnchorPane fx:id="ap3" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                                                <children>
                                                                   <ImageView id="image3" fx:id="image3" fitHeight="125.0" fitWidth="284.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
                                                                </children>
@@ -60,12 +60,12 @@
                                                    <children>
                                                       <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="261.0" prefWidth="278.0">
                                                         <items>
-                                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                                          <AnchorPane fx:id="ap4" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                                                <children>
                                                                   <ImageView id="image4" fx:id="image4" fitHeight="127.0" fitWidth="278.0" pickOnBounds="true" preserveRatio="true" />
                                                                </children>
                                                             </AnchorPane>
-                                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                                          <AnchorPane fx:id="ap5" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                                                <children>
                                                                   <ImageView id="image5" fx:id="image5" fitHeight="125.0" fitWidth="276.0" pickOnBounds="true" preserveRatio="true" />
                                                                </children>

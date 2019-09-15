@@ -58,9 +58,8 @@ public class ControllerLogin {
 
 
     public void checkUserType(UserBean bean, Stage stage) {
-        String bho;
+        User myUser;
         String userType;
-        //String nickname;
 
         DBFunctions dbf = new DBFunctions();
 
@@ -72,7 +71,7 @@ public class ControllerLogin {
 
         bean.setUserType(userType);
         //bean.setNickname(nickname);
-        User myUser= new User(bean.getId(),bean.getPassword(),bean.getUserType());
+        myUser= new User(bean.getId(),bean.getPassword(),bean.getUserType());   //creazione dell'oggetto utente
 
         Main notify = new Main();
 

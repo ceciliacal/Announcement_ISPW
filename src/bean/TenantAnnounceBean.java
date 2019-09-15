@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class TenantAnnounceBean {
 
     private String title;
-    private String name;
+    private String idUser;
     private String city;
     private int room;
     private int people;
@@ -23,8 +23,8 @@ public class TenantAnnounceBean {
     public void setTitle(String title) {this.title = title; }
     public String getTitle() {return this.title;}
 
-    public void setName(String name) {this.name = name;}
-    public String getName() {return this.name;}
+    public void setName(String idUser) {this.idUser = idUser;}
+    public String getName() {return this.idUser;}
 
     public void setCity(String city) {this.city = city;}
     public String getCity() {return this.city;}

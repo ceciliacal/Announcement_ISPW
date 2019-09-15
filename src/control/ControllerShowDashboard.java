@@ -2,7 +2,6 @@ package control;
 
 import bean.RenterAnnounceBean;
 import bean.TenantAnnounceBean;
-import boundary.ShowDashboardUIController;
 import dao.DBFunctions;
 
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ public class ControllerShowDashboard {
 
 
     //funzione che recupera dal DB due liste di bean, una contenente renterAnnounceBean e
-    // una tenantAnnounceBean
+    // una bean
     public void createListAnnounce(ArrayList<RenterAnnounceBean> renterList, ArrayList<TenantAnnounceBean> tenantList){
 
         //creiamo le due liste che poi andiamo a mettere nelle listView di showDashboard...
@@ -31,6 +30,7 @@ public class ControllerShowDashboard {
        // rList = dbf.searchRenterAnnounces();
        // tList = dbf.searchTenantAnnounces();
         dbf.searchAnnounces(renterList,tenantList);
+        //renterList.add("---Nessuno---");
 
         for(int i=0;i<renterList.size();i++){
             System.out.println("C: "+renterList.get(i).getAddress());

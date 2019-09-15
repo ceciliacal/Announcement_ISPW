@@ -9,9 +9,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.TenantAnnounceUIController">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.TenantAnnounceUIController">
    <children>
-      <TextField fx:id="nameField" layoutX="132.0" layoutY="62.0" prefHeight="26.0" prefWidth="185.0" />
       <Label layoutX="37.0" layoutY="67.0" text="Nome Utente" underline="true">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
@@ -46,5 +45,6 @@
       </TextField>
       <Button fx:id="okBtn" layoutX="526.0" layoutY="147.0" mnemonicParsing="false" onAction="#clickedOkButton" text="ok" />
       <Button fx:id="publishBtn" layoutX="612.0" layoutY="21.0" mnemonicParsing="false" onAction="#clickedPublishBtn" text="Pubblica" />
+      <Label fx:id="nameField" layoutX="130.0" layoutY="67.0" prefHeight="17.0" prefWidth="90.0" text="idUser" />
    </children>
 </AnchorPane>
